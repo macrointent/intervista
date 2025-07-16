@@ -8,4 +8,4 @@ RUN Locally
 
 DEPLOY
     docker build -t intervista-mcp . 
-    docker run -p 8002:8002 intervista-mcp  
+    docker run --env-file .env -p 8002:8002 intervista-mcp
