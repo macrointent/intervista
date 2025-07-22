@@ -8,4 +8,23 @@ RUN Locally
 
 DEPLOY
     docker build -t intervista-mcp . 
-    docker run -p 8002:8002 intervista-mcp  
+    docker run --name intervista-mcp --env-file .env -p 8002:8002 intervista-mcp
+
+
+TESTS
+    docker exec -it angry_chebyshev bash
+
+    apt-get update && apt-get install -y curl
+    curl -u "macrointent:&a?4\$wfM" "https://test-protactive.schutzgarant.de/ca-rest/product/64/SelfActive%20Erfassung/DE/false/false"
+    echo $INTERVISTA_USER
+
+
+-------
+TAVILY
+
+docker pull mcp/tavily
+docker run -it --rm \
+  -p 3000:3000 \
+  --env-file .env \
+  mcp/tavily
+ 

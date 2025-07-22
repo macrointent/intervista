@@ -2,3 +2,4 @@ fastmcp
 uvicorn
 requests
 dotenv
+openai
