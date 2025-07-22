@@ -87,3 +87,7 @@ def get_products(customer: str) -> dict[str, object]:
 
 
 app = mcp.http_app(path="/")
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("intervista:app", host="0.0.0.0", port=8002, reload=True)
