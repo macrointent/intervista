@@ -182,6 +182,10 @@ def parse_json(data):
     global url, key, model
 
     j_object = None
+
+    if isinstance(data, dict):
+        return data
+
     if not data or len(data) < 5:
         return None
 
