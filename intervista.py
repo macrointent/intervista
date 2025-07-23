@@ -171,7 +171,12 @@ def submit_form(data):
         params=params,
         json=json_data,
     )
-    response = {"status_code": answer.status_code, "content": json.loads(answer.text)}
+
+    try:
+        content = answer.json()
+    except Exception:
+        content = answer.text
+    response = {"status_code": answer.status_code, "content": content}
     return response
 
 
