@@ -45,6 +45,135 @@ def get_products(customer: str) -> dict[str, object]:
     return _get_products(customer)
 
 
+@mcp.tool()
+def get_form(
+    customer: str,
+    displayName: str,
+) -> dict[str, object]:
+
+    global raw_data
+    global configurations
+
+    # retrieve pv_id
+    pv_id = None
+    data = None
+    for product in products.values():
+        if displayName in product["displayName"]:
+            pv_id = product["productVariantId"]
+            data = raw_data.get(pv_id)
+            break
+
+    # if pv_id in configurations:
+    #     return configurations[pv_id]
+    if not pv_id:
+        response = _get_products(customer)
+        for product in response.values():
+            if displayName in product["displayName"]:
+                pv_id = product["productVariantId"]
+                data = raw_data.get(pv_id)
+                break
+
+    if not pv_id:
+        return {"Error:", "Product name unknown, use the correct displayName."}
+
+    if data is None:
+        session = requests.Session()
+        item = session.get(url + str(pv_id) + path, auth=HTTPBasicAuth(user, pwd))
+        data = item.json()["result"][0]
+        raw_data[pv_id] = data
+    # if pv_id in raw_data:
+    #     data = raw_data[pv_id]
+    # else:
+    #     session = requests.Session()
+    #     item = session.get(url + pv_id + path, auth=HTTPBasicAuth(user, pwd))
+    #     data = item.json()["result"][0]
+    #     raw_data[pv_id] = data
+
+    configuration = create_configuration(pv_id=pv_id, data=data)
+    # print(configuration)
+    # configurations[pv_id] = configuration
+    return configuration
+
+
+@mcp.tool()
+def submit_form(data):
+
+    json_data = _parse_json(data)
+    url = os.getenv("SCHUTZGARANT_URL")
+    params = {"dryRun": "true", "async": "true"}
+    headers = {"Accept": "application/json", "Content-Type": "application/json"}
+    session = requests.Session()
+    answer = session.post(
+        url,
+        auth=HTTPBasicAuth(user, pwd),
+        headers=headers,
+        params=params,
+        json=json_data,
+    )
+
+    try:
+        content = answer.json()
+    except Exception:
+        content = answer.text
+    response = {"status_code": answer.status_code, "content": content}
+    return response
+
+
+app = mcp.http_app(path="/")
+
+
+def _parse_json(data):
+    global url, key, model
+
+    j_object = None
+
+    if isinstance(data, dict):
+        return data
+
+    if not data or len(data) < 5:
+        return None
+
+    js = data
+    for attempt in range(3):
+        # Find JSON braces
+        s = js.find("{")
+        e = js.rfind("}") + 1
+        if s == -1 or e <= s:
+            print(f"Could not find valid JSON braces in: {js}")
+            js = data  # reset for LLM
+        else:
+            try:
+                j_object = json.loads(js[s:e])
+                return j_object
+            except json.JSONDecodeError:
+                print(f"Attempt {attempt+1}: JSON decode failed.")
+
+        # Try LLM repair
+        try:
+            messages = [
+                {
+                    "role": "system",
+                    "content": (
+                        "You are a JSON expert function that accepts malformed and broken JSON strings. "
+                        "You reply with the corrected version that requires the least changes and fully retains the content and structure. "
+                        "Do not comment or explain, just return the corrected JSON."
+                    ),
+                },
+                {"role": "user", "content": js},
+            ]
+            client = OpenAI(base_url=base, api_key=key)
+            response = client.chat.completions.create(model=model, messages=messages)
+            js = response.choices[0].message.content
+        except Exception as e:
+            print(f"An error occurred with LLM: {str(e)}")
+            continue
+
+    print(
+        f"Failed to parse/fix JSON after 3 attempts. Original: {data}, Last attempt: {js}"
+    )
+    return None
+
+
 def _get_products(customer: str) -> dict[str, object]:
     global customers
     global raw_data
@@ -104,135 +233,6 @@ def _get_products(customer: str) -> dict[str, object]:
                 response[id] = product
                 products[id] = product
     return response
-
-
-@mcp.tool()
-def get_form(
-    customer: str,
-    displayName: str,
-) -> dict[str, object]:
-
-    global raw_data
-    global configurations
-
-    # retrieve pv_id
-    pv_id = None
-    data = None
-    for product in products.values():
-        if displayName in product["displayName"]:
-            pv_id = product["productVariantId"]
-            data = raw_data.get(pv_id)
-            break
-
-    # if pv_id in configurations:
-    #     return configurations[pv_id]
-    if not pv_id:
-        response = _get_products(customer)
-        for product in response.values():
-            if displayName in product["displayName"]:
-                pv_id = product["productVariantId"]
-                data = raw_data.get(pv_id)
-                break
-
-    if not pv_id:
-        return {"Error:", "Product name unknown, use the correct displayName."}
-
-    if data is None:
-        session = requests.Session()
-        item = session.get(url + str(pv_id) + path, auth=HTTPBasicAuth(user, pwd))
-        data = item.json()["result"][0]
-        raw_data[pv_id] = data
-    # if pv_id in raw_data:
-    #     data = raw_data[pv_id]
-    # else:
-    #     session = requests.Session()
-    #     item = session.get(url + pv_id + path, auth=HTTPBasicAuth(user, pwd))
-    #     data = item.json()["result"][0]
-    #     raw_data[pv_id] = data
-
-    configuration = create_configuration(pv_id=pv_id, data=data)
-    # print(configuration)
-    # configurations[pv_id] = configuration
-    return configuration
-
-
-@mcp.tool()
-def submit_form(data):
-
-    json_data = parse_json(data)
-    url = os.getenv("SCHUTZGARANT_URL")
-    params = {"dryRun": "true", "async": "true"}
-    headers = {"Accept": "application/json", "Content-Type": "application/json"}
-    session = requests.Session()
-    answer = session.post(
-        url,
-        auth=HTTPBasicAuth(user, pwd),
-        headers=headers,
-        params=params,
-        json=json_data,
-    )
-
-    try:
-        content = answer.json()
-    except Exception:
-        content = answer.text
-    response = {"status_code": answer.status_code, "content": content}
-    return response
-
-
-app = mcp.http_app(path="/")
-
-
-def parse_json(data):
-    global url, key, model
-
-    j_object = None
-
-    if isinstance(data, dict):
-        return data
-
-    if not data or len(data) < 5:
-        return None
-
-    js = data
-    for attempt in range(3):
-        # Find JSON braces
-        s = js.find("{")
-        e = js.rfind("}") + 1
-        if s == -1 or e <= s:
-            print(f"Could not find valid JSON braces in: {js}")
-            js = data  # reset for LLM
-        else:
-            try:
-                j_object = json.loads(js[s:e])
-                return j_object
-            except json.JSONDecodeError:
-                print(f"Attempt {attempt+1}: JSON decode failed.")
-
-        # Try LLM repair
-        try:
-            messages = [
-                {
-                    "role": "system",
-                    "content": (
-                        "You are a JSON expert function that accepts malformed and broken JSON strings. "
-                        "You reply with the corrected version that requires the least changes and fully retains the content and structure. "
-                        "Do not comment or explain, just return the corrected JSON."
-                    ),
-                },
-                {"role": "user", "content": js},
-            ]
-            client = OpenAI(base_url=base, api_key=key)
-            response = client.chat.completions.create(model=model, messages=messages)
-            js = response.choices[0].message.content
-        except Exception as e:
-            print(f"An error occurred with LLM: {str(e)}")
-            continue
-
-    print(
-        f"Failed to parse/fix JSON after 3 attempts. Original: {data}, Last attempt: {js}"
-    )
-    return None
 
 
 # ------------- definition of generic building blocks -----------------
