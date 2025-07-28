@@ -173,8 +173,9 @@ class PaymentProvider(BaseModel):
 
 
 async def _get_product_data(pv_id: str):
+    logging.info(f"user: {user}, pwd: {pwd}")
     async with AsyncClient(auth=(user, pwd)) as client:
-        response = await client.get(f"{url}{int(pv_id)}{path}")
+        response = await client.get(f"{url}{pv_id}{path}")
         response.raise_for_status()  # Will raise an error if the HTTP code was not 2xx
         raw_data = response.json()["result"][0]
         return raw_data
@@ -510,7 +511,7 @@ async def submit_form(form_id: str, data: str) -> str:
 app = FastAPI()
 mcp_app = mcp.http_app(path="/")
 app = FastAPI(lifespan=mcp_app.lifespan)
-app.mount("/simple", mcp_app)
+app.mount("/intervista", mcp_app)
 
 logging.basicConfig(level=logging.INFO)
 

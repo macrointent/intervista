@@ -4,7 +4,7 @@ SETUP
     pip install -r requirements.txt
 
 RUN Locally
-    uvicorn intervista:app --host 0.0.0.0 --port 8002 --reload
+    uvicorn simple_mcp:app --host 0.0.0.0 --port 8002 --reload
 
 DEPLOY
     docker build -t intervista-mcp . 

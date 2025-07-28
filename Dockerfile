@@ -7,4 +7,4 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
-CMD ["uvicorn", "intervista:app", "--host", "0.0.0.0", "--port", "8002", "--reload"]
+CMD ["uvicorn", "simple_mcp:app", "--host", "0.0.0.0", "--port", "8002", "--reload"]
