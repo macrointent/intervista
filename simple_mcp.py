@@ -452,21 +452,50 @@ async def get_catalog() -> str:
 
 @mcp.tool(
     title="Get order form",
-    description="Retrieves the order form for a specific product.",
+    description="Retrieves the order form for a specific product either by id or name.",
     tags={"product", "form", "order", "schema"},
 )
-async def get_form(form_id: str) -> str:
+async def get_form(id: Optional[str] = None, name: Optional[str] = None) -> str:
+    global catalog
     global forms
 
     request: Request = get_http_request()
     mantix_session_header = request.headers.get("x-mantix-session")
 
-    if not forms:
+    if not catalog:
         await _reset()
-    form = forms.get(form_id)
-    if not form:
-        return f"Error - Unknown Product / Form ID: {form_id}"
-    return json.dumps(form.model_json_schema())
+
+    # provide a
+    if id and forms.get(id):
+        result = forms.get(id).model_json_schema()
+        return json.dumps(result, ensure_ascii=False)
+
+    products = [{"id": v["id"], "name": v["displayName"]} for v in catalog.values()]
+    options = []
+    if name and name.strip():
+        options = [p for p in products if name.lower() in p["name"].lower()]
+
+    if len(options) > 0:
+        id = options[-1]["id"]
+        result = forms.get(str(id)).model_json_schema()
+    # elif len(options) > 1:
+    #     result = {
+    #         "message": "product name ambiguous, which option did you mean?",
+    #         "options": options,
+    #     }
+    else:
+        result = {
+            "message": "product unknown, here is the list of options",
+            "options": products,
+        }
+    return json.dumps(result, ensure_ascii=False)
+
+    # if not forms:
+    #     await _reset()
+    # form = forms.get(id)
+    # if not form:
+    #     return f"Error - Unknown Product / Form ID: {id}"
+    # return json.dumps(form.model_json_schema())
 
 
 @mcp.tool(
@@ -474,15 +503,20 @@ async def get_form(form_id: str) -> str:
     description="Submits the order form for a specific product.",
     tags={"product", "form", "order", "schema"},
 )
-async def submit_form(form_id: str, data: str) -> str:
+async def submit_form(id: str, data: str) -> str:
     request: Request = get_http_request()
     mantix_session_header = request.headers.get("x-mantix-session")
 
     if not forms:
         await _reset()
-    form = forms.get(form_id)
+    form = forms.get(id)
     if not form:
-        return f"Error - Unknown Product / Form ID: {form_id}"
+        products = [{"id": v["id"], "name": v["displayName"]} for v in catalog.values()]
+        result = {
+            "message": "product unknown, here is the list of options",
+            "options": products,
+        }
+        return json.dumps(result, ensure_ascii=False)
 
     try:
         json_data = _parse_json(data)
