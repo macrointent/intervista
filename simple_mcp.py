@@ -561,6 +561,11 @@ async def log_incoming_request(request: Request, call_next):
     return response
 
 
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run("simple_mcp:app", host="0.0.0.0", port=8002, reload=True)
+
 # ------- Legacy Tools ----------------
 
 # @mcp.tool()
