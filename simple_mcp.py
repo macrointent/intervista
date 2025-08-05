@@ -123,19 +123,34 @@ class Person(BaseModel):
 
 
 class PaymentProvider(BaseModel):
+    """
+    Fields required depend on providerType:
+    - -160 (Credit card): providerName, accountNumber, accountOwner, expirationDate required
+    - -161 (Bank): providerNumber, accountNumber, accountOwner required
+    - -162, -163, -165: accountNumber required
+    """
+
     providerType: int = Field(
         ...,
-        description="Type of payment service provider. Possible values: -160 = Credit card, -161 = Bank, -162 = Amazon Pay, -163 = PayPal, -165 = Google Pay",
+        description=(
+            "Type of payment service provider. "
+            "Possible values: -160 = Credit card, -161 = Bank, -162 = Amazon Pay, -163 = PayPal, -165 = Google Pay"
+            "Required fields by type: "
+            "-160: providerName, accountNumber, accountOwner, expirationDate; "
+            "-161: providerNumber, accountNumber, accountOwner; "
+            "-162/-163/-165: accountNumber."
+        ),
     )
     providerNumber: Optional[str] = Field(
-        None, description="BIC of the bank, necessary for intern'ational accounts only"
+        None, description="BIC of the bank, necessary for international accounts only"
     )
     providerName: Optional[str] = Field(
-        None, description="Possible values: Name of bank, 'VISA', 'AMEX', ..."
-    )
-    accountNumber: Optional[str] = Field(
         None,
-        description="IBAN, credit card number or payment id (associated email for online payment services)",
+        description="Mandatory for providerType=-160, Possible values: Name of bank, 'VISA', 'AMEX', ...",
+    )
+    accountNumber: str = Field(
+        ...,
+        description="Mandatory - either IBAN, credit card number or payment id (associated email for online payment services)",
     )
     accountOwner: Optional[str] = Field(None, description="Name of account owner")
     expirationDate: Optional[str] = Field(
