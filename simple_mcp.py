@@ -513,14 +513,18 @@ async def submit_form(id: str, data: str) -> str:
     if not form:
         products = [{"id": v["id"], "name": v["displayName"]} for v in catalog.values()]
         result = {
-            "message": "product unknown, here is the list of options",
+            "error": "product unknown, here is the list of options",
             "options": products,
         }
+        logging.info(f"submission failed because of unknown id: {id}")
         return json.dumps(result, ensure_ascii=False)
 
     try:
         json_data = _parse_json(data)
         form = form(**json_data)
+        logging.info(
+            f"successfully submitted {form.model_dump_json()} for session {mantix_session_header}."
+        )
         return f"successfully submitted {form.model_dump_json()} for session {mantix_session_header}."
     except ValidationError as e:
         suggestions = []
@@ -533,6 +537,7 @@ async def submit_form(id: str, data: str) -> str:
             if choices:
                 suggestion += f". Possible values: {', '.join(choices)}"
             suggestions.append(suggestion)
+        logging.info(f"submission failed for: {data}")
         return (
             "submission failed:\n"
             + "\n".join(suggestions)
