@@ -1,0 +1,639 @@
+{
+  "64": {
+    "id": 64,
+    "displayName": "FirmenSchutzbrief by ELEMENT",
+    "tag": [
+      "Versicherung",
+      "Geschäftskundentarif",
+      "FirmenSchutz",
+      "Einzelversicherung",
+      "Multigerätetarif"
+    ],
+    "attribute": [
+      {
+        "displayName": "DocumentChecker: Id Dokumentenattribut",
+        "displayDescription": "",
+        "value": "-300",
+        "visible": false
+      },
+      {
+        "displayName": "DocumentChecker: Name Attribut an Vertrag",
+        "displayDescription": "",
+        "value": "Versicherungsschein-Nr.",
+        "visible": false
+      },
+      {
+        "displayName": "Mindestvertragslaufzeit",
+        "displayDescription": "",
+        "value": "12",
+        "visible": false
+      },
+      {
+        "displayName": "max. Laufzeit Monate",
+        "displayDescription": "",
+        "value": "60",
+        "visible": false
+      },
+      {
+        "displayName": "Zahlungsart",
+        "displayDescription": "",
+        "value": "Überweisung",
+        "visible": false
+      },
+      {
+        "displayName": "Zahlungsweise",
+        "displayDescription": "",
+        "value": "einmalig",
+        "visible": false
+      }
+    ]
+  },
+  "3415": {
+    "id": 3415,
+    "displayName": "HandySchutzbrief Basis ohne Diebstahl (Risikoträger ELEMENT)",
+    "tag": [
+      "Privatkundentarif",
+      "Versicherung",
+      "Basis",
+      "Einzelversicherung",
+      "Check24"
+    ],
+    "attribute": [
+      {
+        "displayName": "weltweiter Rundum-Schutz",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "1 neues oder gebrauchtes Handy (jedes Gerätealter)",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Displayschäden",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Verschleiß Akku",
+        "displayDescription": "",
+        "value": "false",
+        "visible": true
+      },
+      {
+        "displayName": "Garantieverlängerung nach Ablauf der Garantie",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Flüssigkeitsschäden inkl. Witterung",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Diebstahl",
+        "displayDescription": "",
+        "value": "false",
+        "visible": true
+      },
+      {
+        "displayName": "Selbstbeteiligung 10% vom Kaufpreis",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Tägliche Kündigungsoption",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Wartefrist Wochen",
+        "displayDescription": "Wird der Versicherungsvertrag für das versicherte Gerät erst nach dem Kaufdatum abgeschlossen, gilt eine Wartezeit von vier Wochen ab Abschluss des Versicherungsvertrages. Für vor oder während der Wartezeit eingetretene\r\nVersicherungsfälle besteht kein Versicherungsschutz.",
+        "value": null,
+        "visible": false
+      },
+      {
+        "displayName": "Wartefrist (in Wochen) nach Gerätealter",
+        "displayDescription": "Wird der Versicherungsvertrag für das versicherte Gerät erst nach dem Kaufdatum abgeschlossen, kannst du Dein Gerät kostenpflichtig und auf Dein eigenes Risiko zur Überprüfung an die Smartphoniker GmbH, Geräteprüfung Schutzgarant, Bahnhofstraße 30, 24223 Schwentinental einsenden, um das Gerät ohne Wartezeit zu versichern. Sobald die SCHUZTGARANT GmbH Schadenservice den mangelfreien Zustand bestätigt, verzichten wir auf die Wartezeit. Schickst Du Dein Gerät nicht zur Überprüfung ein gilt für Geräte mit einem Gerätealter bis 42 Tage keine Wartezeit, für Geräte mit einem Gerätealter bis 180 Tage eine Wartezeit von sechs Wochen ab Abschluss des Versicherungsvertrages. Für Geräte mit einem Gerätealter bis 360 Tage gilt eine Wartezeit von zwölf Wochen ab Abschluss des Versicherungsvertrages. Geräte, die älter als 360 Tage bei Abschluss des Versicherungsvertrages sind können nur mit Überprüfung versichert werden. Die Berechnung des Gerätealters erfolgt auf Grundlage des Kaufdatums des Gerätes, welches Du durch einen Kaufbeleg nachweisen musst. Für vor oder während der Wartezeit eingetretene Versicherungsfälle besteht kein Versicherungsschutz.",
+        "value": "Tage[42]=0\r\nTage[180]=6\r\nTage[3000]=12",
+        "visible": false
+      },
+      {
+        "displayName": "Schutzbeginn",
+        "displayDescription": "",
+        "value": null,
+        "visible": false
+      },
+      {
+        "displayName": "Zahlungsart",
+        "displayDescription": "",
+        "value": "Lastschrift",
+        "visible": false
+      },
+      {
+        "displayName": "Zahlungsweise",
+        "displayDescription": "",
+        "value": "monatlich",
+        "visible": false
+      }
+    ]
+  },
+  "3424": {
+    "id": 3424,
+    "displayName": "HandySchutzbrief Basis ohne Diebstahl (Risikoträger ELEMENT)",
+    "tag": [
+      "Privatkundentarif",
+      "Versicherung",
+      "Basis",
+      "Einzelversicherung",
+      "Check24"
+    ],
+    "attribute": [
+      {
+        "displayName": "weltweiter Rundum-Schutz",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "1 neues oder gebrauchtes Handy (jedes Gerätealter)",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Displayschäden",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Verschleiß Akku",
+        "displayDescription": "",
+        "value": "false",
+        "visible": true
+      },
+      {
+        "displayName": "Garantieverlängerung nach Ablauf der Garantie",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Flüssigkeitsschäden inkl. Witterung",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Diebstahl",
+        "displayDescription": "",
+        "value": "false",
+        "visible": true
+      },
+      {
+        "displayName": "Selbstbeteiligung 10% vom Kaufpreis",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Tägliche Kündigungsoption",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Wartefrist Wochen",
+        "displayDescription": "Wird der Versicherungsvertrag für das versicherte Gerät erst nach dem Kaufdatum abgeschlossen, gilt eine Wartezeit von vier Wochen ab Abschluss des Versicherungsvertrages. Für vor oder während der Wartezeit eingetretene\r\nVersicherungsfälle besteht kein Versicherungsschutz.",
+        "value": null,
+        "visible": false
+      },
+      {
+        "displayName": "Wartefrist (in Wochen) nach Gerätealter",
+        "displayDescription": "Wird der Versicherungsvertrag für das versicherte Gerät erst nach dem Kaufdatum abgeschlossen, kannst du Dein Gerät kostenpflichtig und auf Dein eigenes Risiko zur Überprüfung an die Smartphoniker GmbH, Geräteprüfung Schutzgarant, Bahnhofstraße 30, 24223 Schwentinental einsenden, um das Gerät ohne Wartezeit zu versichern. Sobald die SCHUZTGARANT GmbH Schadenservice den mangelfreien Zustand bestätigt, verzichten wir auf die Wartezeit. Schickst Du Dein Gerät nicht zur Überprüfung ein gilt für Geräte mit einem Gerätealter bis 42 Tage keine Wartezeit, für Geräte mit einem Gerätealter bis 180 Tage eine Wartezeit von sechs Wochen ab Abschluss des Versicherungsvertrages. Für Geräte mit einem Gerätealter bis 360 Tage gilt eine Wartezeit von zwölf Wochen ab Abschluss des Versicherungsvertrages. Geräte, die älter als 360 Tage bei Abschluss des Versicherungsvertrages sind können nur mit Überprüfung versichert werden. Die Berechnung des Gerätealters erfolgt auf Grundlage des Kaufdatums des Gerätes, welches Du durch einen Kaufbeleg nachweisen musst. Für vor oder während der Wartezeit eingetretene Versicherungsfälle besteht kein Versicherungsschutz.",
+        "value": "Tage[42]=0\r\nTage[180]=6\r\nTage[3000]=12",
+        "visible": false
+      },
+      {
+        "displayName": "Schutzbeginn",
+        "displayDescription": "",
+        "value": null,
+        "visible": false
+      },
+      {
+        "displayName": "Zahlungsart",
+        "displayDescription": "",
+        "value": "Lastschrift",
+        "visible": false
+      },
+      {
+        "displayName": "Zahlungsweise",
+        "displayDescription": "",
+        "value": "Jahresbeitrag",
+        "visible": false
+      }
+    ]
+  },
+  "3436": {
+    "id": 3436,
+    "displayName": "HandySchutzbrief Premium mit Diebstahl (Risikoträger ELEMENT)",
+    "tag": [
+      "Privatkundentarif",
+      "Versicherung",
+      "Premium",
+      "Einzelversicherung",
+      "Check24"
+    ],
+    "attribute": [
+      {
+        "displayName": "weltweiter Rundum-Schutz",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "1 neues oder gebrauchtes Handy (jedes Gerätealter)",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Displayschäden",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Verschleiß Akku",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Garantieverlängerung nach Ablauf der Garantie",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Flüssigkeitsschäden inkl. Witterung",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Diebstahl",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Selbstbeteiligung 0€",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Tägliche Kündigungsoption",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Wartefrist Wochen",
+        "displayDescription": "Wird der Versicherungsvertrag für das versicherte Gerät erst nach dem Kaufdatum abgeschlossen, gilt eine Wartezeit von vier Wochen ab Abschluss des Versicherungsvertrages. Für vor oder während der Wartezeit eingetretene\r\nVersicherungsfälle besteht kein Versicherungsschutz.",
+        "value": "",
+        "visible": false
+      },
+      {
+        "displayName": "Wartefrist (in Wochen) nach Gerätealter",
+        "displayDescription": "Wird der Versicherungsvertrag für das versicherte Gerät erst nach dem Kaufdatum abgeschlossen, kannst du Dein Gerät kostenpflichtig und auf Dein eigenes Risiko zur Überprüfung an die Smartphoniker GmbH, Geräteprüfung Schutzgarant, Bahnhofstraße 30, 24223 Schwentinental einsenden, um das Gerät ohne Wartezeit zu versichern. Sobald die SCHUZTGARANT GmbH Schadenservice den mangelfreien Zustand bestätigt, verzichten wir auf die Wartezeit. Schickst Du Dein Gerät nicht zur Überprüfung ein gilt für Geräte mit einem Gerätealter bis 42 Tage keine Wartezeit, für Geräte mit einem Gerätealter bis 180 Tage eine Wartezeit von sechs Wochen ab Abschluss des Versicherungsvertrages. Für Geräte mit einem Gerätealter bis 360 Tage gilt eine Wartezeit von zwölf Wochen ab Abschluss des Versicherungsvertrages. Geräte, die älter als 360 Tage bei Abschluss des Versicherungsvertrages sind können nur mit Überprüfung versichert werden. Die Berechnung des Gerätealters erfolgt auf Grundlage des Kaufdatums des Gerätes, welches Du durch einen Kaufbeleg nachweisen musst. Für vor oder während der Wartezeit eingetretene Versicherungsfälle besteht kein Versicherungsschutz.",
+        "value": "Tage[42]=0\r\nTage[180]=6\r\nTage[3000]=12",
+        "visible": false
+      },
+      {
+        "displayName": "Schutzbeginn",
+        "displayDescription": "",
+        "value": null,
+        "visible": false
+      },
+      {
+        "displayName": "Zahlungsart",
+        "displayDescription": "",
+        "value": "Lastschrift",
+        "visible": false
+      }
+    ]
+  },
+  "3448": {
+    "id": 3448,
+    "displayName": "HandySchutzbrief Premium Online mit Diebstahl (Risikoträger ELEMENT)",
+    "tag": [
+      "Privatkundentarif",
+      "Online",
+      "Versicherung",
+      "Premium",
+      "Einzelversicherung"
+    ],
+    "attribute": [
+      {
+        "displayName": "weltweiter Rundum-Schutz",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "1 neues oder gebrauchtes Handy (jedes Gerätealter)",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Displayschäden",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Verschleiß Akku",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Garantieverlängerung nach Ablauf der Garantie",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Flüssigkeitsschäden inkl. Witterung",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Diebstahl",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Selbstbeteiligung 0€",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Tägliche Kündigungsoption",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Wartefrist Wochen",
+        "displayDescription": "Wird der Versicherungsvertrag für das versicherte Gerät erst nach dem Kaufdatum abgeschlossen, gilt eine Wartezeit von vier Wochen ab Abschluss des Versicherungsvertrages. Für vor oder während der Wartezeit eingetretene\r\nVersicherungsfälle besteht kein Versicherungsschutz.",
+        "value": "",
+        "visible": false
+      },
+      {
+        "displayName": "Wartefrist Wochen 2",
+        "displayDescription": "Wird der Versicherungsvertrag für das versicherte Gerät erst nach dem Kaufdatum abgeschlossen, kannst du Dein Gerät kostenpflichtig und auf Dein eigenes Risiko zur Überprüfung an die Smartphoniker GmbH, Geräteprüfung Schutzgarant, Bahnhofstraße 30, 24223 Schwentinental einsenden, um das Gerät ohne Wartezeit zu versichern. Sobald die SCHUZTGARANT GmbH Schadenservice den mangelfreien Zustand bestätigt, verzichten wir auf die Wartezeit. Schickst Du Dein Gerät nicht zur Überprüfung ein gilt für Geräte mit einem Gerätealter bis 90 Tage eine Wartezeit von vier Wochen ab Abschluss des Versicherungsvertrages. Für Geräte mit einem Gerätealter bis 180 Tage gilt eine Wartezeit von zusätzlichen vier Wochen ab Abschluss des Versicherungsvertrages. Für Geräte mit einem Gerätealter bis 360 Tage gilt eine Wartezeit von zusätzlichen vier Wochen ab Abschluss des Versicherungsvertrages. Geräte, die älter als 360 Tage bei Abschluss des Versicherungsvertrages sind können nur mit Überprüfung versichert werden. Die Berechnung des Gerätealters erfolgt auf Grundlag des Kaufdatums des Gerätes, welches Du durch einen Kaufbeleg nachweisen musst. Für vor oder während der Wartezeit eingetretene Versicherungsfälle besteht kein Versicherungsschutz.",
+        "value": "Tage[42]=0\r\nTage[180]=6\r\nTage[3000]=12",
+        "visible": false
+      },
+      {
+        "displayName": "Schutzbeginn",
+        "displayDescription": "",
+        "value": null,
+        "visible": false
+      },
+      {
+        "displayName": "Zahlungsart",
+        "displayDescription": "",
+        "value": "Lastschrift",
+        "visible": false
+      },
+      {
+        "displayName": "Zahlungsweise",
+        "displayDescription": "",
+        "value": "jährlich",
+        "visible": false
+      }
+    ]
+  },
+  "3571": {
+    "id": 3571,
+    "displayName": "HandySchutzbrief Mobilfunk Basis ohne Diebstahl (Risikoträger ELEMENT)",
+    "tag": [
+      "Privatkundentarif",
+      "Versicherung",
+      "Basis",
+      "Einzelversicherung",
+      "Check24"
+    ],
+    "attribute": [
+      {
+        "displayName": "Mobilfunk X-Selling",
+        "displayDescription": "",
+        "value": "true",
+        "visible": false
+      },
+      {
+        "displayName": "weltweiter Rundum-Schutz",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "1 neues oder gebrauchtes Handy (jedes Gerätealter)",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Displayschäden",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Verschleiß Akku",
+        "displayDescription": "",
+        "value": "false",
+        "visible": true
+      },
+      {
+        "displayName": "Garantieverlängerung nach Ablauf der Garantie",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Flüssigkeitsschäden inkl. Witterung",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Diebstahl",
+        "displayDescription": "",
+        "value": "false",
+        "visible": true
+      },
+      {
+        "displayName": "Selbstbeteiligung 10% vom Kaufpreis",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Tägliche Kündigungsoption",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Wartefrist Wochen",
+        "displayDescription": "Wird der Versicherungsvertrag für das versicherte Gerät erst nach dem Kaufdatum abgeschlossen, gilt eine Wartezeit von vier Wochen ab Abschluss des Versicherungsvertrages. Für vor oder während der Wartezeit eingetretene\r\nVersicherungsfälle besteht kein Versicherungsschutz.",
+        "value": null,
+        "visible": false
+      },
+      {
+        "displayName": "Wartefrist (in Wochen) nach Gerätealter",
+        "displayDescription": "Wird der Versicherungsvertrag für das versicherte Gerät erst nach dem Kaufdatum abgeschlossen, kannst du Dein Gerät kostenpflichtig und auf Dein eigenes Risiko zur Überprüfung an die Smartphoniker GmbH, Geräteprüfung Schutzgarant, Bahnhofstraße 30, 24223 Schwentinental einsenden, um das Gerät ohne Wartezeit zu versichern. Sobald die SCHUZTGARANT GmbH Schadenservice den mangelfreien Zustand bestätigt, verzichten wir auf die Wartezeit. Schickst Du Dein Gerät nicht zur Überprüfung ein gilt für Geräte mit einem Gerätealter bis 42 Tage keine Wartezeit, für Geräte mit einem Gerätealter bis 180 Tage eine Wartezeit von sechs Wochen ab Abschluss des Versicherungsvertrages. Für Geräte mit einem Gerätealter bis 360 Tage gilt eine Wartezeit von zwölf Wochen ab Abschluss des Versicherungsvertrages. Geräte, die älter als 360 Tage bei Abschluss des Versicherungsvertrages sind können nur mit Überprüfung versichert werden. Die Berechnung des Gerätealters erfolgt auf Grundlage des Kaufdatums des Gerätes, welches Du durch einen Kaufbeleg nachweisen musst. Für vor oder während der Wartezeit eingetretene Versicherungsfälle besteht kein Versicherungsschutz.",
+        "value": "Tage[42]=0\r\nTage[180]=6\r\nTage[3000]=12",
+        "visible": false
+      },
+      {
+        "displayName": "Schutzbeginn",
+        "displayDescription": "",
+        "value": null,
+        "visible": false
+      },
+      {
+        "displayName": "Zahlungsart",
+        "displayDescription": "",
+        "value": "Lastschrift",
+        "visible": false
+      },
+      {
+        "displayName": "Zahlungsweise",
+        "displayDescription": "",
+        "value": "monatlich",
+        "visible": false
+      }
+    ]
+  },
+  "3610": {
+    "id": 3610,
+    "displayName": "HandySchutzbrief Mobilfunk Premium ohne Diebstahl (Risikoträger HELVETIA)",
+    "tag": [
+      "Check24",
+      "Einzelversicherung",
+      "Premium",
+      "Privatkundentarif",
+      "Versicherung"
+    ],
+    "attribute": [
+      {
+        "displayName": "Mobilfunk X-Selling",
+        "displayDescription": "",
+        "value": "true",
+        "visible": false
+      },
+      {
+        "displayName": "weltweiter Rundum-Schutz",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Maximales Gerätealter Tage",
+        "displayDescription": "",
+        "value": "14",
+        "visible": true
+      },
+      {
+        "displayName": "Displayschäden",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Verschleiß Akku",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Garantieverlängerung nach Ablauf der Garantie",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Flüssigkeitsschäden inkl. Witterung",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Diebstahl",
+        "displayDescription": "",
+        "value": "false",
+        "visible": true
+      },
+      {
+        "displayName": "Selbstbeteiligung 0€",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Tägliche Kündigungsoption",
+        "displayDescription": "",
+        "value": "true",
+        "visible": true
+      },
+      {
+        "displayName": "Wartefrist Wochen",
+        "displayDescription": "Wird der Versicherungsvertrag für das versicherte Gerät erst nach dem Kaufdatum abgeschlossen, gilt eine Wartezeit von vier Wochen ab Abschluss des Versicherungsvertrages. Für vor oder während der Wartezeit eingetretene\r\nVersicherungsfälle besteht kein Versicherungsschutz.",
+        "value": "",
+        "visible": false
+      },
+      {
+        "displayName": "Wartefrist (in Wochen) nach Gerätealter",
+        "displayDescription": "Wird der Versicherungsvertrag für das versicherte Gerät erst nach dem Kaufdatum abgeschlossen, kannst du Dein Gerät kostenpflichtig und auf Dein eigenes Risiko zur Überprüfung an die Smartphoniker GmbH, Geräteprüfung Schutzgarant, Bahnhofstraße 30, 24223 Schwentinental einsenden, um das Gerät ohne Wartezeit zu versichern. Sobald die SCHUZTGARANT GmbH Schadenservice den mangelfreien Zustand bestätigt, verzichten wir auf die Wartezeit. Schickst Du Dein Gerät nicht zur Überprüfung ein gilt für Geräte mit einem Gerätealter bis 42 Tage keine Wartezeit, für Geräte mit einem Gerätealter bis 180 Tage eine Wartezeit von sechs Wochen ab Abschluss des Versicherungsvertrages. Für Geräte mit einem Gerätealter bis 360 Tage gilt eine Wartezeit von zwölf Wochen ab Abschluss des Versicherungsvertrages. Geräte, die älter als 360 Tage bei Abschluss des Versicherungsvertrages sind können nur mit Überprüfung versichert werden. Die Berechnung des Gerätealters erfolgt auf Grundlage des Kaufdatums des Gerätes, welches Du durch einen Kaufbeleg nachweisen musst. Für vor oder während der Wartezeit eingetretene Versicherungsfälle besteht kein Versicherungsschutz.",
+        "value": "Tage[42]=0\r\nTage[180]=6\r\nTage[3000]=12",
+        "visible": false
+      },
+      {
+        "displayName": "Schutzbeginn",
+        "displayDescription": "",
+        "value": null,
+        "visible": false
+      },
+      {
+        "displayName": "Zahlungsart",
+        "displayDescription": "",
+        "value": "Lastschrift",
+        "visible": false
+      },
+      {
+        "displayName": "Zahlungsweise",
+        "displayDescription": "",
+        "value": "Jahresbeitrag",
+        "visible": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,256 @@
+[
+  {
+    "user_input": "Was habt ihr so an Versicherungen?",
+    "session": { "stage": "portfolio", "product": "", "form_data": {}, "form_schema_present": false },
+    "history": [],
+    "plan": { "function": "provide_category_overview", "arguments": {} },
+    "agent_response": "Wir haben u.a. Handyversicherungen (Basis/Premium, auch Online) sowie einen FirmenSchutzbrief. Möchtest du Privatkundentarife fürs Handy sehen oder Infos zum FirmenSchutzbrief?"
+  },
+
+  {
+    "user_input": "Zeig mir alle Handyversicherungen.",
+    "session": { "stage": "portfolio", "product": "", "form_data": {}, "form_schema_present": false },
+    "history": [
+      { "role": "user", "content": "Was habt ihr so an Versicherungen?" },
+      { "role": "agent", "content": "Wir haben u.a. Handyversicherungen (Basis/Premium, auch Online) sowie einen FirmenSchutzbrief. Möchtest du Privatkundentarife fürs Handy sehen oder Infos zum FirmenSchutzbrief?", "tool_call": { "function": "provide_category_overview", "arguments": {} } }
+    ],
+    "plan": { "function": "schutzgarant_catalog", "arguments": { "query": "handyversicherung alle" } },
+    "agent_response": "Hier ist die Übersicht:\n• HandySchutzbrief Basis ohne Diebstahl — Variante mit monatlicher Zahlung\n• HandySchutzbrief Basis ohne Diebstahl — Variante mit Jahresbeitrag\n• HandySchutzbrief Premium mit Diebstahl\n• HandySchutzbrief Premium Online mit Diebstahl\nWas möchtest du vergleichen?"
+  },
+
+  {
+    "user_input": "Ich will Premium mit Diebstahl.",
+    "session": { "stage": "portfolio", "product": "", "form_data": {}, "form_schema_present": false },
+    "history": [
+      { "role": "user", "content": "Zeig mir alle Handyversicherungen." },
+      { "role": "agent", "content": "Hier ist die Übersicht:\n• HandySchutzbrief Basis ohne Diebstahl — Variante mit monatlicher Zahlung\n• HandySchutzbrief Basis ohne Diebstahl — Variante mit Jahresbeitrag\n• HandySchutzbrief Premium mit Diebstahl\n• HandySchutzbrief Premium Online mit Diebstahl\nWas möchtest du vergleichen?", "tool_call": { "function": "schutzgarant_catalog", "arguments": { "query": "handyversicherung alle" } } }
+    ],
+    "plan": { "function": "schutzgarant_catalog", "arguments": { "query": "HandySchutzbrief Premium mit Diebstahl details" } },
+    "agent_response": "Der **HandySchutzbrief Premium mit Diebstahl** bietet weltweiten Rundum-Schutz inkl. Diebstahl, Flüssigkeit- und Displayschäden, Akku-Verschleiß, Garantieverlängerung und tägliche Kündigungsoption. Keine Selbstbeteiligung. Möchtest du diesen Tarif auswählen?"
+  },
+
+  {
+    "user_input": "Ja, den nehme ich.",
+    "session": { "stage": "recommend", "product": "HandySchutzbrief Premium mit Diebstahl (Risikoträger ELEMENT)", "form_data": {}, "form_schema_present": false },
+    "history": [
+      { "role": "user", "content": "Ich will Premium mit Diebstahl." },
+      { "role": "agent", "content": "Der **HandySchutzbrief Premium mit Diebstahl** bietet weltweiten Rundum-Schutz inkl. Diebstahl, Flüssigkeit- und Displayschäden, Akku-Verschleiß, Garantieverlängerung und tägliche Kündigungsoption. Keine Selbstbeteiligung. Möchtest du diesen Tarif auswählen?", "tool_call": { "function": "schutzgarant_catalog", "arguments": { "query": "HandySchutzbrief Premium mit Diebstahl details" } } }
+    ],
+    "plan": { "function": "schutzgarant_order", "arguments": { "function": "get_form", "arguments": { "name": "HandySchutzbrief Premium mit Diebstahl (Risikoträger ELEMENT)", "id": 3436 } } },
+    "agent_response": "**HandySchutzbrief Premium mit Diebstahl – kurze Details:**\n• Diebstahl: ja\n• Displayschäden: ja\n• Unfallschäden: ja\n• Selbstbeteiligung: 0 €\n• Zahlweise: monatlich\n• Kündigung: täglich\n• Risikoträger: ELEMENT\n\nAlles klar – ich sammle kurz die wichtigsten Angaben.\n\nDeine Personendaten:\n- Vorname\n- Nachname\n\nAntworte einfach direkt."
+  },
+
+  {
+    "user_input": "Ich bin Anna Becker.",
+    "session": { "stage": "form", "product": "HandySchutzbrief Premium mit Diebstahl (Risikoträger ELEMENT)", "form_data": { "product_name": "HandySchutzbrief Premium mit Diebstahl (Risikoträger ELEMENT)" }, "form_schema_present": true },
+    "history": [
+      { "role": "user", "content": "Ja, den nehme ich." },
+      { "role": "agent", "content": "**HandySchutzbrief Premium mit Diebstahl – kurze Details:**\n• Diebstahl: ja\n• Displayschäden: ja\n• Unfallschäden: ja\n• Selbstbeteiligung: 0 €\n• Zahlweise: monatlich\n• Kündigung: täglich\n• Risikoträger: ELEMENT\n\nAlles klar – ich sammle kurz die wichtigsten Angaben.\n\nDeine Personendaten:\n- Vorname\n- Nachname\n\nAntworte einfach direkt.", "tool_call": { "function": "schutzgarant_order", "arguments": { "function": "get_form", "arguments": { "name": "HandySchutzbrief Premium mit Diebstahl (Risikoträger ELEMENT)", "id": 3436 } } } }
+    ],
+    "plan": { "function": "schutzgarant_order", "arguments": { "function": "_mantix", "arguments": { "provided": ["product_name"], "missing": ["first_name", "last_name", "email", "device_model", "purchase_date", "payment_method"] } } },
+    "agent_response": "Danke, Frau Becker. Wie lautet Ihre E-Mail-Adresse?"
+  },
+
+  {
+    "user_input": "anna.b@example.com",
+    "session": { "stage": "form", "product": "HandySchutzbrief Premium mit Diebstahl (Risikoträger ELEMENT)", "form_data": { "product_name": "HandySchutzbrief Premium mit Diebstahl (Risikoträger ELEMENT)", "first_name": "Anna", "last_name": "Becker" }, "form_schema_present": true },
+    "history": [
+      { "role": "user", "content": "Ich bin Anna Becker." },
+      { "role": "agent", "content": "Danke, Frau Becker. Wie lautet Ihre E-Mail-Adresse?", "tool_call": { "function": "schutzgarant_order", "arguments": { "function": "_mantix", "arguments": { "provided": ["product_name"], "missing": ["first_name", "last_name", "email", "device_model", "purchase_date", "payment_method"] } } } }
+    ],
+    "plan": { "function": "schutzgarant_order", "arguments": { "function": "_mantix", "arguments": { "provided": ["product_name", "first_name", "last_name"], "missing": ["email", "device_model", "purchase_date", "payment_method"] } } },
+    "agent_response": "Perfekt, danke. Welches Handy-Modell möchtest du versichern und wann hast du es gekauft?"
+  },
+
+  {
+    "user_input": "iPhone 15, Kaufdatum 2024-01-10. Bezahle per Kreditkarte.",
+    "session": { "stage": "form", "product": "HandySchutzbrief Premium mit Diebstahl (Risikoträger ELEMENT)", "form_data": { "product_name": "HandySchutzbrief Premium mit Diebstahl (Risikoträger ELEMENT)", "first_name": "Anna", "last_name": "Becker", "email": "anna.b@example.com" }, "form_schema_present": true },
+    "history": [
+      { "role": "user", "content": "anna.b@example.com" },
+      { "role": "agent", "content": "Perfekt, danke. Welches Handy-Modell möchtest du versichern und wann hast du es gekauft?" }
+    ],
+    "plan": { "function": "schutzgarant_order", "arguments": { "function": "_mantix", "arguments": { "provided": ["product_name", "first_name", "last_name", "email", "device_model", "purchase_date", "payment_method"], "missing": [] } } },
+    "agent_response": "Alles da — kurze Zusammenfassung & Vertragsdetails:\n• Tarif: HandySchutzbrief Premium mit Diebstahl\n• Leistungen: Diebstahl, Flüssigkeit, Display, Akku-Verschleiß, Garantieverlängerung, tägliche Kündigung, 0 € SB\n• Gerät: iPhone 15, Kaufdatum 2024-01-10\n• Zahlung: Kreditkarte\nSollen wir jetzt verbindlich einreichen?"
+  },
+
+  {
+    "user_input": "Ja, bitte abschicken.",
+    "session": { "stage": "form", "product": "HandySchutzbrief Premium mit Diebstahl (Risikoträger ELEMENT)", "form_data": { "product_name": "HandySchutzbrief Premium mit Diebstahl (Risikoträger ELEMENT)", "first_name": "Anna", "last_name": "Becker", "email": "anna.b@example.com", "device_model": "Apple iPhone 15", "purchase_date": "2024-01-10", "payment_method": "Kreditkarte" }, "form_schema_present": true },
+    "history": [
+      { "role": "user", "content": "iPhone 15, Kaufdatum 2024-01-10. Bezahle per Kreditkarte." },
+      { "role": "agent", "content": "Alles da — kurze Zusammenfassung & Vertragsdetails:\n• Tarif: HandySchutzbrief Premium mit Diebstahl\n• Leistungen: Diebstahl, Flüssigkeit, Display, Akku-Verschleiß, Garantieverlängerung, tägliche Kündigung, 0 € SB\n• Gerät: iPhone 15, Kaufdatum 2024-01-10\n• Zahlung: Kreditkarte\nSollen wir jetzt verbindlich einreichen?" }
+    ],
+    "plan": {
+      "function": "schutzgarant_order",
+      "arguments": {
+        "function": "submit_form",
+        "arguments": {
+          "Person": {
+            "typeId": -2101,
+            "firstName": "Anna",
+            "lastName": "Becker",
+            "contactInformations": [{ "typeId": -23, "value": "anna.b@example.com" }]
+          },
+          "Payment": {
+            "providerType": -160,
+            "providerName": "VISA",
+            "accountNumber": "4111111111111111",
+            "accountOwner": "Anna Becker",
+            "expirationDate": "12/28"
+          },
+          "Attributes": { "attribute_331": "Handy/Smartphone" },
+          "Modules": {
+            "attribute_70": "Apple",
+            "attribute_130": "iPhone 15",
+            "attribute_3733": "2 Wochen bis 6 Wochen"
+          }
+        }
+      }
+    },
+    "agent_response": "Danke, dein Antrag wurde übermittelt. Du erhältst gleich die Bestätigung per E-Mail."
+  },
+
+  {
+    "user_input": "Ich möchte eher ohne Diebstahl.",
+    "session": { "stage": "portfolio", "product": "", "form_data": {}, "form_schema_present": false },
+    "history": [],
+    "plan": { "function": "schutzgarant_catalog", "arguments": { "query": "HandySchutzbrief Basis ohne Diebstahl varianten" } },
+    "agent_response": "Ohne Diebstahl gibt es zwei Varianten: **monatliche Zahlung** und **Jahresbeitrag**. Beide decken Display- und Flüssigkeitsschäden, weltweiten Schutz und tägliche Kündigung; es gilt eine Selbstbeteiligung. Welche Zahlungsweise passt dir?"
+  },
+
+  {
+    "user_input": "Jahresbeitrag passt. Nehme den Basis ohne Diebstahl.",
+    "session": { "stage": "recommend", "product": "HandySchutzbrief Basis ohne Diebstahl (Risikoträger ELEMENT)", "form_data": {}, "form_schema_present": false },
+    "history": [
+      { "role": "user", "content": "Ich möchte eher ohne Diebstahl." },
+      { "role": "agent", "content": "Ohne Diebstahl gibt es zwei Varianten: **monatliche Zahlung** und **Jahresbeitrag**. Beide decken Display- und Flüssigkeitsschäden, weltweiten Schutz und tägliche Kündigung; es gilt eine Selbstbeteiligung. Welche Zahlungsweise passt dir?", "tool_call": { "function": "schutzgarant_catalog", "arguments": { "query": "HandySchutzbrief Basis ohne Diebstahl varianten" } } }
+    ],
+    "plan": { "function": "schutzgarant_order", "arguments": { "function": "get_form", "arguments": { "name": "HandySchutzbrief Basis ohne Diebstahl (Risikoträger ELEMENT)", "id": 3424 } } },
+    "agent_response": "**HandySchutzbrief Basis ohne Diebstahl – kurze Details:**\n• Diebstahl: nein\n• Display/Flüssigkeit: ja\n• Kündigung: täglich\n• Zahlung: Jahresbeitrag\n\nAlles klar – ich brauche deinen vollständigen Namen."
+  },
+
+  {
+    "user_input": "Max Mustermann, max@demo.de, Gerät: Samsung Galaxy S23, gekauft 2024-02-01. Zahlung SEPA.",
+    "session": { "stage": "form", "product": "HandySchutzbrief Basis ohne Diebstahl (Risikoträger ELEMENT)", "form_data": { "product_name": "HandySchutzbrief Basis ohne Diebstahl (Risikoträger ELEMENT)" }, "form_schema_present": true },
+    "history": [
+      { "role": "user", "content": "Jahresbeitrag passt. Nehme den Basis ohne Diebstahl." },
+      { "role": "agent", "content": "**HandySchutzbrief Basis ohne Diebstahl – kurze Details:**\n• Diebstahl: nein\n• Display/Flüssigkeit: ja\n• Kündigung: täglich\n• Zahlung: Jahresbeitrag\n\nAlles klar – ich brauche deinen vollständigen Namen.", "tool_call": { "function": "schutzgarant_order", "arguments": { "function": "get_form", "arguments": { "name": "HandySchutzbrief Basis ohne Diebstahl (Risikoträger ELEMENT)", "id": 3424 } } } }
+    ],
+    "plan": { "function": "schutzgarant_order", "arguments": { "function": "_mantix", "arguments": {
+      "provided": ["product_name", "first_name", "last_name", "email", "device_model", "purchase_date", "payment_method"],
+      "missing": []
+    } } },
+    "agent_response": "Kurzcheck & Vertragsdetails:\n• Tarif: HandySchutzbrief Basis ohne Diebstahl (Jahresbeitrag)\n• Leistungen: Display/Flüssigkeit, weltweiter Schutz, tägliche Kündigung, Selbstbeteiligung\n• Gerät: Samsung Galaxy S23 (Kauf: 2024-02-01)\n• Zahlung: SEPA\nSollen wir einreichen?"
+  },
+
+  {
+    "user_input": "Ja, bitte.",
+    "session": { "stage": "form", "product": "HandySchutzbrief Basis ohne Diebstahl (Risikoträger ELEMENT)", "form_data": { "product_name": "HandySchutzbrief Basis ohne Diebstahl (Risikoträger ELEMENT)", "first_name": "Max", "last_name": "Mustermann", "email": "max@demo.de", "device_model": "Samsung Galaxy S23", "purchase_date": "2024-02-01", "payment_method": "SEPA" }, "form_schema_present": true },
+    "history": [
+      { "role": "user", "content": "Max Mustermann, max@demo.de, Gerät: Samsung Galaxy S23, gekauft 2024-02-01. Zahlung SEPA." },
+      { "role": "agent", "content": "Kurzcheck & Vertragsdetails:\n• Tarif: HandySchutzbrief Basis ohne Diebstahl (Jahresbeitrag)\n• Leistungen: Display/Flüssigkeit, weltweiter Schutz, tägliche Kündigung, Selbstbeteiligung\n• Gerät: Samsung Galaxy S23 (Kauf: 2024-02-01)\n• Zahlung: SEPA\nSollen wir einreichen?" }
+    ],
+    "plan": {
+      "function": "schutzgarant_order",
+      "arguments": {
+        "function": "submit_form",
+        "arguments": {
+          "Person": {
+            "typeId": -2101,
+            "firstName": "Max",
+            "lastName": "Mustermann",
+            "contactInformations": [{ "typeId": -23, "value": "max@demo.de" }]
+          },
+          "Payment": {
+            "providerType": -161,
+            "providerNumber": "GENODEF1S01",
+            "accountNumber": "DE89370400440532013000",
+            "accountOwner": "Max Mustermann"
+          },
+          "Attributes": { "attribute_331": "Handy/Smartphone" },
+          "Modules": {
+            "attribute_70": "Samsung",
+            "attribute_130": "Galaxy S23",
+            "attribute_3733": "2 Wochen bis 6 Wochen"
+          }
+        }
+      }
+    },
+    "agent_response": "Erfolgreich übermittelt — du bekommst gleich eine E-Mail mit den Vertragsunterlagen."
+  },
+
+  {
+    "user_input": "Ich suche etwas für Firmenhandys.",
+    "session": { "stage": "portfolio", "product": "", "form_data": {}, "form_schema_present": false },
+    "history": [],
+    "plan": { "function": "schutzgarant_catalog", "arguments": { "query": "FirmenSchutzbrief details" } },
+    "agent_response": "Für Geschäftskunden gibt es den **FirmenSchutzbrief by ELEMENT**. Mindestlaufzeit 12 Monate, Zahlung als einmalige Überweisung. Möchtest du Details oder direkt starten?"
+  },
+
+  {
+    "user_input": "Direkt starten bitte.",
+    "session": { "stage": "recommend", "product": "FirmenSchutzbrief by ELEMENT", "form_data": {}, "form_schema_present": false },
+    "history": [
+      { "role": "user", "content": "Ich suche etwas für Firmenhandys." },
+      { "role": "agent", "content": "Für Geschäftskunden gibt es den **FirmenSchutzbrief by ELEMENT**. Mindestlaufzeit 12 Monate, Zahlung als einmalige Überweisung. Möchtest du Details oder direkt starten?", "tool_call": { "function": "schutzgarant_catalog", "arguments": { "query": "FirmenSchutzbrief details" } } }
+    ],
+    "plan": { "function": "schutzgarant_order", "arguments": { "function": "get_form", "arguments": { "name": "FirmenSchutzbrief by ELEMENT", "id": 64 } } },
+    "agent_response": "**FirmenSchutzbrief by ELEMENT – kurze Details:**\n• Zahlung: Überweisung (einmalig)\n• Mindestlaufzeit: 12 Monate\n\nAlles klar – ich brauche den vollständigen Namen und eine E-Mail-Adresse der Ansprechperson."
+  },
+
+  {
+    "user_input": "Marta König, m.koenig@firma.de. Ein iPhone 15 wird am 2024-03-01 geliefert. Zahlung per Überweisung.",
+    "session": { "stage": "form", "product": "FirmenSchutzbrief by ELEMENT", "form_data": { "product_name": "FirmenSchutzbrief by ELEMENT" }, "form_schema_present": true },
+    "history": [
+      { "role": "user", "content": "Direkt starten bitte." },
+      { "role": "agent", "content": "**FirmenSchutzbrief by ELEMENT – kurze Details:**\n• Zahlung: Überweisung (einmalig)\n• Mindestlaufzeit: 12 Monate\n\nAlles klar – ich brauche den vollständigen Namen und eine E-Mail-Adresse der Ansprechperson.", "tool_call": { "function": "schutzgarant_order", "arguments": { "function": "get_form", "arguments": { "name": "FirmenSchutzbrief by ELEMENT", "id": 64 } } } }
+    ],
+    "plan": { "function": "schutzgarant_order", "arguments": { "function": "_mantix", "arguments": {
+      "provided": ["product_name", "first_name", "last_name", "email", "payment_method", "purchase_date", "device_model"],
+      "missing": []
+    } } },
+    "agent_response": "Perfekt. Zusammenfassung & Vertragsdetails:\n• Tarif: FirmenSchutzbrief by ELEMENT\n• Laufzeit: mindestens 12 Monate\n• Gerät: iPhone 15 (Lieferung: 2024-03-01)\n• Zahlung: Überweisung\nSollen wir einreichen?"
+  },
+
+  {
+    "user_input": "Bitte einreichen.",
+    "session": { "stage": "form", "product": "FirmenSchutzbrief by ELEMENT", "form_data": { "product_name": "FirmenSchutzbrief by ELEMENT", "first_name": "Marta", "last_name": "König", "email": "m.koenig@firma.de", "payment_method": "Überweisung", "purchase_date": "2024-03-01", "device_model": "iPhone 15" }, "form_schema_present": true },
+    "history": [
+      { "role": "user", "content": "Marta König, m.koenig@firma.de. Ein iPhone 15 wird am 2024-03-01 geliefert. Zahlung per Überweisung." },
+      { "role": "agent", "content": "Perfekt. Zusammenfassung & Vertragsdetails:\n• Tarif: FirmenSchutzbrief by ELEMENT\n• Laufzeit: mindestens 12 Monate\n• Gerät: iPhone 15 (Lieferung: 2024-03-01)\n• Zahlung: Überweisung\nSollen wir einreichen?" }
+    ],
+    "plan": {
+      "function": "schutzgarant_order",
+      "arguments": {
+        "function": "submit_form",
+        "arguments": {
+          "Person": {
+            "typeId": -30,
+            "lastName": "Firma",
+            "addresses": []
+          },
+          "Payment": {
+            "providerType": -161,
+            "accountNumber": "AUF_RECHNUNG_OE",
+            "accountOwner": "Firma"
+          },
+          "Attributes": { "attribute_7": "Smartphones & Handys", "attribute_4": 12 },
+          "Modules": {
+            "attribute_1": "2024-03-01",
+            "attribute_70": "Apple",
+            "attribute_130": "iPhone 15"
+          }
+        }
+      }
+    },
+    "agent_response": "Beantragung ist angestoßen. Du erhältst die Vertragsunterlagen per E-Mail."
+  },
+
+  {
+    "user_input": "Kannst du schon absenden?",
+    "session": { "stage": "form", "product": "HandySchutzbrief Premium Online mit Diebstahl (Risikoträger ELEMENT)", "form_data": { "first_name": "Tassilo", "last_name": "Klein", "email": "tjklein@gmail.com", "payment_method": "Kreditkarte" }, "form_schema_present": true, "labels": { "device_model": "Modell", "purchase_date": "Kauf-/Lieferdatum" }, "required_now": ["first_name","last_name","email","payment_method","device_model","purchase_date"] },
+    "history": [],
+    "plan": { "function": "schutzgarant_order", "arguments": { "function": "submit_form", "arguments": { "provided": ["first_name","last_name","email","payment_method"], "missing": ["device_model","purchase_date"] } } },
+    "agent_response": "Ich kann noch nicht absenden. Es fehlen: Modell, Kauf-/Lieferdatum. Bitte ergänze diese Angaben."
+  }
+]

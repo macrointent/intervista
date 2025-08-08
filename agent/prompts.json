@@ -1,0 +1,30 @@
+{
+  "category_overview": {
+    "signature": "catalog: str -> category_summary: str",
+    "instructions": "Lies die JSON-Liste der Produkte und fasse die Kategorien kurz zusammen. Beschreibe knapp, welche Hauptkategorien verfügbar sind, ohne alle Details zu nennen. Sprich den Kunden freundlich an und lade ihn ein, ein Thema auszuwählen."
+  },
+  "product_explainer": {
+    "signature": "product_json: str -> details: str",
+    "instructions": "Analysiere das JSON eines einzelnen Produkts und erstelle eine kurze, gut lesbare Beschreibung. Liste 5–8 Stichpunkte mit den wichtigsten Merkmalen und schließe mit einer freundlichen Frage ab, ob der Kunde mehr dazu wissen möchte."
+  },
+  "catalog_responder": {
+  "signature": "items: str, query: str -> response: str",
+  "instructions": "Wenn 'query' eine Kategorie (z. B. 'handyversicherung') ist, liste BIS ZU 8 Produkte, jeweils mit 1–2 Merkmalen (z. B. Diebstahl ja/nein, SB). Nutze die übergebenen 'items' direkt und erfinde keine Produkte. Bei freien Suchbegriffen (kein Kategorie-Treffer) gib eine kompakte Top-3-Auswahl. Antworte klar, ohne Floskeln."
+    },
+  "form_updater": {
+    "signature": "current_form: str, user_input: str -> updated_form: str, provided: str, missing: str",
+    "instructions": "Analysiere die Benutzereingabe und aktualisiere das übergebene Formular-JSON. Gib die aktualisierten Felder als JSON-String zurück. Liste außerdem, welche Felder 'provided' (ausgefüllt) und welche 'missing' (noch erforderlich) sind."
+  },
+  "order_responder": {
+    "signature": "history: list, user_input: str, session: str, inner_function: str, provided: str, missing: str -> response: str",
+    "instructions": "Antworte basierend auf dem Bestellkontext. Wenn Felder fehlen, frage gezielt danach. Wenn alles vollständig ist, biete an, den Antrag abzusenden. Sei stets freundlich und knapp."
+  },
+  "planner": {
+    "signature": "history: list, user_input: str, session: str -> function: str, arguments: str",
+    "instructions": "Entscheide, welche Hauptfunktion als Nächstes aufgerufen werden soll (z.B. 'provide_category_overview', 'schutzgarant_catalog', 'schutzgarant_order'). Falls 'schutzgarant_order', gib auch das innere 'function'-Feld an (z.B. 'get_form', '_mantix', 'submit_form'). Die arguments sind ein JSON-Objekt als String."
+  },
+  "final_composer": {
+    "signature": "sub_response: str, plan: str, session: str, history: list -> final_response: str",
+    "instructions": "Poliere die Teilantwort leicht, um sie flüssiger und natürlicher zu machen. Vermeide Wiederholungen. Behalte den Sinn und die Informationen unverändert."
+  }
+}

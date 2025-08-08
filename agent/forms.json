@@ -1,0 +1,3301 @@
+[
+  {
+    "id": 64,
+    "name": "FirmenSchutzbrief by ELEMENT",
+    "schema": {
+      "$defs": {
+        "Address": {
+          "properties": {
+            "typeId": {
+              "description": "Address type. -10 = Private, -11 = Business, -12 = Billing, -13 = Delivery",
+              "title": "Typeid",
+              "type": "integer"
+            },
+            "street": {
+              "description": "Street (without house number)",
+              "title": "Street",
+              "type": "string"
+            },
+            "streetNumber": {
+              "description": "House number",
+              "title": "Streetnumber",
+              "type": "string"
+            },
+            "addition": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Additional info (e.g. '2nd floor')",
+              "title": "Addition"
+            },
+            "zipcode": {
+              "description": "Postal code",
+              "title": "Zipcode",
+              "type": "string"
+            },
+            "city": {
+              "description": "City name",
+              "title": "City",
+              "type": "string"
+            },
+            "countryCode": {
+              "description": "2-char ISO country code (e.g. DE)",
+              "maxLength": 2,
+              "minLength": 2,
+              "title": "Countrycode",
+              "type": "string"
+            }
+          },
+          "required": [
+            "typeId",
+            "street",
+            "streetNumber",
+            "zipcode",
+            "city",
+            "countryCode"
+          ],
+          "title": "Address",
+          "type": "object"
+        },
+        "Attributes": {
+          "properties": {
+            "attribute_7": {
+              "default": "Smartphones & Handys",
+              "description": " (allowed: Smartphones & Handys, Notebooks & Tablets, Sonstige Geräte)",
+              "enum": [
+                "Smartphones & Handys",
+                "Notebooks & Tablets",
+                "Sonstige Geräte"
+              ],
+              "title": "Gerätekategorie",
+              "type": "string"
+            },
+            "attribute_4": {
+              "default": 24,
+              "description": " (must be integer)",
+              "title": "Laufzeit in Monaten",
+              "type": "integer"
+            }
+          },
+          "title": "Attributes",
+          "type": "object"
+        },
+        "ContactInfo": {
+          "properties": {
+            "typeId": {
+              "description": "Contact type. -21=Mobile, -20=Landline, -23=Email, -22=Fax",
+              "title": "Typeid",
+              "type": "integer"
+            },
+            "value": {
+              "description": "Contact value: phone/email/etc.",
+              "title": "Value",
+              "type": "string"
+            }
+          },
+          "required": [
+            "typeId",
+            "value"
+          ],
+          "title": "ContactInfo",
+          "type": "object"
+        },
+        "Modules": {
+          "properties": {
+            "attribute_13": {
+              "default": "",
+              "description": " (must be integer)",
+              "title": "Anzahl der Geräte",
+              "type": "integer"
+            },
+            "attribute_16": {
+              "default": 24,
+              "description": " (must be integer)",
+              "title": "Herstellergarantie (Monate)",
+              "type": "integer"
+            },
+            "attribute_226": {
+              "default": 24,
+              "description": " (must be integer)",
+              "title": "Garantie auf Akku (Monate)",
+              "type": "integer"
+            },
+            "attribute_166": {
+              "default": "",
+              "description": "",
+              "title": "Einzelgerätewert ohne MwSt. (!)",
+              "type": "string"
+            },
+            "attribute_1": {
+              "description": " (YYYY-MM-DD)",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "title": "Lieferdatum",
+              "type": "string"
+            },
+            "attribute_70": {
+              "description": " (allowed: Samsung, Apple, Huawei, Xiaomi, Acer, AEG, Alcatel, Allview, Amica, Asus, ATAG, Bauknecht, BEKO, Blackberry, Blomberg, Bomann, Bosch (BSH), Candy, Canon, CAT, Caterpillar, Clatronic, Constructa, Cubot, DELL, Doro, Electrolux, Elektra Bregenz, Epson, Exquisit, Fagor, Fairphone, Fujifilm, Fujitsu, Gaggenau, Gigaset, Google, GoPro, Gorenje, Grundig, Haier, Hewlett Packard/HP, Honor, Hoover, HTC, Ignis, Ikea, Indesit, ISY, Juno, Koenic, Körting, Küppersbusch, Leica, Lenovo, LG, Liebherr, Microsoft, Miele, Motorola, Neff, Nikon, Nokia, ok, Olympus, OnePlus, OPPO, Oranier, Panasonic, PEAQ, Privileg, Progress, Schaub Lorenz, Sharp, Sibir, Siemens, Smeg, Sony, Teka, Termikel, UleFone, Vivo, Whirlpool, Wiko, Zanker, Zanussi, ZTE, Sonstige)",
+              "enum": [
+                "Samsung",
+                "Apple",
+                "Huawei",
+                "Xiaomi",
+                "Acer",
+                "AEG",
+                "Alcatel",
+                "Allview",
+                "Amica",
+                "Asus",
+                "ATAG",
+                "Bauknecht",
+                "BEKO",
+                "Blackberry",
+                "Blomberg",
+                "Bomann",
+                "Bosch (BSH)",
+                "Candy",
+                "Canon",
+                "CAT",
+                "Caterpillar",
+                "Clatronic",
+                "Constructa",
+                "Cubot",
+                "DELL",
+                "Doro",
+                "Electrolux",
+                "Elektra Bregenz",
+                "Epson",
+                "Exquisit",
+                "Fagor",
+                "Fairphone",
+                "Fujifilm",
+                "Fujitsu",
+                "Gaggenau",
+                "Gigaset",
+                "Google",
+                "GoPro",
+                "Gorenje",
+                "Grundig",
+                "Haier",
+                "Hewlett Packard/HP",
+                "Honor",
+                "Hoover",
+                "HTC",
+                "Ignis",
+                "Ikea",
+                "Indesit",
+                "ISY",
+                "Juno",
+                "Koenic",
+                "Körting",
+                "Küppersbusch",
+                "Leica",
+                "Lenovo",
+                "LG",
+                "Liebherr",
+                "Microsoft",
+                "Miele",
+                "Motorola",
+                "Neff",
+                "Nikon",
+                "Nokia",
+                "ok",
+                "Olympus",
+                "OnePlus",
+                "OPPO",
+                "Oranier",
+                "Panasonic",
+                "PEAQ",
+                "Privileg",
+                "Progress",
+                "Schaub Lorenz",
+                "Sharp",
+                "Sibir",
+                "Siemens",
+                "Smeg",
+                "Sony",
+                "Teka",
+                "Termikel",
+                "UleFone",
+                "Vivo",
+                "Whirlpool",
+                "Wiko",
+                "Zanker",
+                "Zanussi",
+                "ZTE",
+                "Sonstige"
+              ],
+              "title": "Hersteller",
+              "type": "string"
+            },
+            "attribute_217": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": "",
+              "description": "",
+              "title": "Herstellername"
+            },
+            "attribute_130": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": "",
+              "description": "",
+              "title": "Modell"
+            },
+            "attribute_25": {
+              "default": "Alle Unfallschäden",
+              "description": " (allowed: Bildschirmschaden, Alle Unfallschäden)",
+              "enum": [
+                "Bildschirmschaden",
+                "Alle Unfallschäden"
+              ],
+              "title": "Deckungsumfang (Unfall)",
+              "type": "string"
+            },
+            "attribute_28": {
+              "default": "Alle Arten von Diebstahl",
+              "description": " (allowed: Raub und Einbruch, Alle Arten von Diebstahl)",
+              "enum": [
+                "Raub und Einbruch",
+                "Alle Arten von Diebstahl"
+              ],
+              "title": "Deckungsumfang (Diebstahl)",
+              "type": "string"
+            }
+          },
+          "required": [
+            "attribute_1",
+            "attribute_70"
+          ],
+          "title": "Modules",
+          "type": "object"
+        },
+        "PaymentProvider": {
+          "description": "Fields required depend on providerType:\n- -160 (Credit card): providerName, accountNumber, accountOwner, expirationDate required\n- -161 (Bank): providerNumber, accountNumber, accountOwner required\n- -162, -163, -165: accountNumber required",
+          "properties": {
+            "providerType": {
+              "description": "Type of payment service provider. Possible values: -160 = Credit card, -161 = Bank, -162 = Amazon Pay, -163 = PayPal, -165 = Google PayRequired fields by type: -160: providerName, accountNumber, accountOwner, expirationDate; -161: providerNumber, accountNumber, accountOwner; -162/-163/-165: accountNumber.",
+              "title": "Providertype",
+              "type": "integer"
+            },
+            "providerNumber": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "BIC of the bank, necessary for international accounts only",
+              "title": "Providernumber"
+            },
+            "providerName": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Mandatory for providerType=-160, Possible values: Name of bank, 'VISA', 'AMEX', ...",
+              "title": "Providername"
+            },
+            "accountNumber": {
+              "description": "Mandatory - either IBAN, credit card number or payment id (associated email for online payment services)",
+              "title": "Accountnumber",
+              "type": "string"
+            },
+            "accountOwner": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Name of account owner",
+              "title": "Accountowner"
+            },
+            "expirationDate": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Needed when providerType=-160",
+              "title": "Expirationdate"
+            }
+          },
+          "required": [
+            "providerType",
+            "accountNumber"
+          ],
+          "title": "PaymentProvider",
+          "type": "object"
+        },
+        "Person": {
+          "properties": {
+            "typeId": {
+              "description": "Person type: -2101 main, -30 company",
+              "title": "Typeid",
+              "type": "integer"
+            },
+            "salutationId": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Salutation ID, required for individuals",
+              "title": "Salutationid"
+            },
+            "title": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Title such as Dr., Prof., etc.",
+              "title": "Title"
+            },
+            "firstName": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "First name. Not for companies.",
+              "title": "Firstname"
+            },
+            "lastName": {
+              "description": "Last name or company name",
+              "title": "Lastname",
+              "type": "string"
+            },
+            "dateOfBirth": {
+              "anyOf": [
+                {
+                  "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Date of birth (YYYY-MM-DD)",
+              "title": "Dateofbirth"
+            },
+            "addresses": {
+              "description": "Addresses of the person",
+              "items": {
+                "$ref": "#/$defs/Address"
+              },
+              "title": "Addresses",
+              "type": "array"
+            },
+            "contactInformations": {
+              "description": "Contact info (phone, email, etc.)",
+              "items": {
+                "$ref": "#/$defs/ContactInfo"
+              },
+              "title": "Contactinformations",
+              "type": "array"
+            }
+          },
+          "required": [
+            "typeId",
+            "lastName"
+          ],
+          "title": "Person",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "Person": {
+          "$ref": "#/$defs/Person"
+        },
+        "Payment": {
+          "$ref": "#/$defs/PaymentProvider"
+        },
+        "Attributes": {
+          "$ref": "#/$defs/Attributes"
+        },
+        "Modules": {
+          "$ref": "#/$defs/Modules"
+        }
+      },
+      "required": [
+        "Person",
+        "Payment",
+        "Attributes",
+        "Modules"
+      ],
+      "title": "Form_64",
+      "type": "object"
+    }
+  },
+  {
+    "id": 3415,
+    "name": "HandySchutzbrief Basis ohne Diebstahl (Risikoträger ELEMENT)",
+    "schema": {
+      "$defs": {
+        "Address": {
+          "properties": {
+            "typeId": {
+              "description": "Address type. -10 = Private, -11 = Business, -12 = Billing, -13 = Delivery",
+              "title": "Typeid",
+              "type": "integer"
+            },
+            "street": {
+              "description": "Street (without house number)",
+              "title": "Street",
+              "type": "string"
+            },
+            "streetNumber": {
+              "description": "House number",
+              "title": "Streetnumber",
+              "type": "string"
+            },
+            "addition": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Additional info (e.g. '2nd floor')",
+              "title": "Addition"
+            },
+            "zipcode": {
+              "description": "Postal code",
+              "title": "Zipcode",
+              "type": "string"
+            },
+            "city": {
+              "description": "City name",
+              "title": "City",
+              "type": "string"
+            },
+            "countryCode": {
+              "description": "2-char ISO country code (e.g. DE)",
+              "maxLength": 2,
+              "minLength": 2,
+              "title": "Countrycode",
+              "type": "string"
+            }
+          },
+          "required": [
+            "typeId",
+            "street",
+            "streetNumber",
+            "zipcode",
+            "city",
+            "countryCode"
+          ],
+          "title": "Address",
+          "type": "object"
+        },
+        "Attributes": {
+          "properties": {
+            "attribute_331": {
+              "default": "Handy/Smartphone",
+              "description": " (allowed: Handy/Smartphone, Tablet, Smartwatch)",
+              "enum": [
+                "Handy/Smartphone",
+                "Tablet",
+                "Smartwatch"
+              ],
+              "title": "Gerätetyp",
+              "type": "string"
+            }
+          },
+          "title": "Attributes",
+          "type": "object"
+        },
+        "ContactInfo": {
+          "properties": {
+            "typeId": {
+              "description": "Contact type. -21=Mobile, -20=Landline, -23=Email, -22=Fax",
+              "title": "Typeid",
+              "type": "integer"
+            },
+            "value": {
+              "description": "Contact value: phone/email/etc.",
+              "title": "Value",
+              "type": "string"
+            }
+          },
+          "required": [
+            "typeId",
+            "value"
+          ],
+          "title": "ContactInfo",
+          "type": "object"
+        },
+        "Modules": {
+          "properties": {
+            "attribute_604": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": false,
+              "description": "",
+              "title": "Ich kenne meine IMEI-/Seriennummer noch nicht"
+            },
+            "attribute_67": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": "",
+              "description": "",
+              "title": "IMEI-/Seriennummer"
+            },
+            "attribute_3730": {
+              "default": "501 - 750 €",
+              "description": " (allowed: 0 - 250 €, 251 - 500 €, 501 - 750 €, 751 - 1.000 €, 1.001 - 1.250 €, 1.251 - 1.500 €, 1.501 - 1.750 €, 1.751 - 2.000 €, 2.001 - 2.500 €, 2.501 - 3.000 €)",
+              "enum": [
+                "0 - 250 €",
+                "251 - 500 €",
+                "501 - 750 €",
+                "751 - 1.000 €",
+                "1.001 - 1.250 €",
+                "1.251 - 1.500 €",
+                "1.501 - 1.750 €",
+                "1.751 - 2.000 €",
+                "2.001 - 2.500 €",
+                "2.501 - 3.000 €"
+              ],
+              "title": "Unsubventionierter Kaufpreis",
+              "type": "string"
+            },
+            "attribute_3733": {
+              "default": "bis 2 Wochen",
+              "description": " (allowed: bis 2 Wochen, 2 Wochen bis 6 Wochen, 6 Wochen bis halbes Jahr, halbes Jahr bis 1 Jahr, 1 Jahr bis 2 Jahre, älter als 2 Jahre)",
+              "enum": [
+                "bis 2 Wochen",
+                "2 Wochen bis 6 Wochen",
+                "6 Wochen bis halbes Jahr",
+                "halbes Jahr bis 1 Jahr",
+                "1 Jahr bis 2 Jahre",
+                "älter als 2 Jahre"
+              ],
+              "title": "Gerätealter",
+              "type": "string"
+            },
+            "attribute_70": {
+              "description": " (allowed: Samsung, Apple, Huawei, Xiaomi, Acer, AEG, Alcatel, Allview, Amica, Asus, ATAG, Bauknecht, BEKO, Blackberry, Blomberg, Bomann, Bosch (BSH), Candy, Canon, CAT, Caterpillar, Clatronic, Constructa, Cubot, DELL, Doro, Electrolux, Elektra Bregenz, Epson, Exquisit, Fagor, Fairphone, Fujifilm, Fujitsu, Gaggenau, Gigaset, Google, GoPro, Gorenje, Grundig, Haier, Hewlett Packard/HP, Honor, Hoover, HTC, Ignis, Ikea, Indesit, ISY, Juno, Koenic, Körting, Küppersbusch, Leica, Lenovo, LG, Liebherr, Microsoft, Miele, Motorola, Neff, Nikon, Nokia, ok, Olympus, OnePlus, OPPO, Oranier, Panasonic, PEAQ, Privileg, Progress, Schaub Lorenz, Sharp, Sibir, Siemens, Smeg, Sony, Teka, Termikel, UleFone, Vivo, Whirlpool, Wiko, Zanker, Zanussi, ZTE, Sonstige)",
+              "enum": [
+                "Samsung",
+                "Apple",
+                "Huawei",
+                "Xiaomi",
+                "Acer",
+                "AEG",
+                "Alcatel",
+                "Allview",
+                "Amica",
+                "Asus",
+                "ATAG",
+                "Bauknecht",
+                "BEKO",
+                "Blackberry",
+                "Blomberg",
+                "Bomann",
+                "Bosch (BSH)",
+                "Candy",
+                "Canon",
+                "CAT",
+                "Caterpillar",
+                "Clatronic",
+                "Constructa",
+                "Cubot",
+                "DELL",
+                "Doro",
+                "Electrolux",
+                "Elektra Bregenz",
+                "Epson",
+                "Exquisit",
+                "Fagor",
+                "Fairphone",
+                "Fujifilm",
+                "Fujitsu",
+                "Gaggenau",
+                "Gigaset",
+                "Google",
+                "GoPro",
+                "Gorenje",
+                "Grundig",
+                "Haier",
+                "Hewlett Packard/HP",
+                "Honor",
+                "Hoover",
+                "HTC",
+                "Ignis",
+                "Ikea",
+                "Indesit",
+                "ISY",
+                "Juno",
+                "Koenic",
+                "Körting",
+                "Küppersbusch",
+                "Leica",
+                "Lenovo",
+                "LG",
+                "Liebherr",
+                "Microsoft",
+                "Miele",
+                "Motorola",
+                "Neff",
+                "Nikon",
+                "Nokia",
+                "ok",
+                "Olympus",
+                "OnePlus",
+                "OPPO",
+                "Oranier",
+                "Panasonic",
+                "PEAQ",
+                "Privileg",
+                "Progress",
+                "Schaub Lorenz",
+                "Sharp",
+                "Sibir",
+                "Siemens",
+                "Smeg",
+                "Sony",
+                "Teka",
+                "Termikel",
+                "UleFone",
+                "Vivo",
+                "Whirlpool",
+                "Wiko",
+                "Zanker",
+                "Zanussi",
+                "ZTE",
+                "Sonstige"
+              ],
+              "title": "Hersteller",
+              "type": "string"
+            },
+            "attribute_217": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": "",
+              "description": "",
+              "title": "Herstellername"
+            },
+            "attribute_130": {
+              "default": "",
+              "description": "",
+              "title": "Modell",
+              "type": "string"
+            },
+            "attribute_16": {
+              "default": 24,
+              "description": " (must be integer)",
+              "title": "Herstellergarantie (Monate)",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "attribute_70"
+          ],
+          "title": "Modules",
+          "type": "object"
+        },
+        "PaymentProvider": {
+          "description": "Fields required depend on providerType:\n- -160 (Credit card): providerName, accountNumber, accountOwner, expirationDate required\n- -161 (Bank): providerNumber, accountNumber, accountOwner required\n- -162, -163, -165: accountNumber required",
+          "properties": {
+            "providerType": {
+              "description": "Type of payment service provider. Possible values: -160 = Credit card, -161 = Bank, -162 = Amazon Pay, -163 = PayPal, -165 = Google PayRequired fields by type: -160: providerName, accountNumber, accountOwner, expirationDate; -161: providerNumber, accountNumber, accountOwner; -162/-163/-165: accountNumber.",
+              "title": "Providertype",
+              "type": "integer"
+            },
+            "providerNumber": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "BIC of the bank, necessary for international accounts only",
+              "title": "Providernumber"
+            },
+            "providerName": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Mandatory for providerType=-160, Possible values: Name of bank, 'VISA', 'AMEX', ...",
+              "title": "Providername"
+            },
+            "accountNumber": {
+              "description": "Mandatory - either IBAN, credit card number or payment id (associated email for online payment services)",
+              "title": "Accountnumber",
+              "type": "string"
+            },
+            "accountOwner": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Name of account owner",
+              "title": "Accountowner"
+            },
+            "expirationDate": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Needed when providerType=-160",
+              "title": "Expirationdate"
+            }
+          },
+          "required": [
+            "providerType",
+            "accountNumber"
+          ],
+          "title": "PaymentProvider",
+          "type": "object"
+        },
+        "Person": {
+          "properties": {
+            "typeId": {
+              "description": "Person type: -2101 main, -30 company",
+              "title": "Typeid",
+              "type": "integer"
+            },
+            "salutationId": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Salutation ID, required for individuals",
+              "title": "Salutationid"
+            },
+            "title": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Title such as Dr., Prof., etc.",
+              "title": "Title"
+            },
+            "firstName": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "First name. Not for companies.",
+              "title": "Firstname"
+            },
+            "lastName": {
+              "description": "Last name or company name",
+              "title": "Lastname",
+              "type": "string"
+            },
+            "dateOfBirth": {
+              "anyOf": [
+                {
+                  "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Date of birth (YYYY-MM-DD)",
+              "title": "Dateofbirth"
+            },
+            "addresses": {
+              "description": "Addresses of the person",
+              "items": {
+                "$ref": "#/$defs/Address"
+              },
+              "title": "Addresses",
+              "type": "array"
+            },
+            "contactInformations": {
+              "description": "Contact info (phone, email, etc.)",
+              "items": {
+                "$ref": "#/$defs/ContactInfo"
+              },
+              "title": "Contactinformations",
+              "type": "array"
+            }
+          },
+          "required": [
+            "typeId",
+            "lastName"
+          ],
+          "title": "Person",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "Person": {
+          "$ref": "#/$defs/Person"
+        },
+        "Payment": {
+          "$ref": "#/$defs/PaymentProvider"
+        },
+        "Attributes": {
+          "$ref": "#/$defs/Attributes"
+        },
+        "Modules": {
+          "$ref": "#/$defs/Modules"
+        }
+      },
+      "required": [
+        "Person",
+        "Payment",
+        "Attributes",
+        "Modules"
+      ],
+      "title": "Form_3415",
+      "type": "object"
+    }
+  },
+  {
+    "id": 3424,
+    "name": "HandySchutzbrief Basis ohne Diebstahl (Risikoträger ELEMENT)",
+    "schema": {
+      "$defs": {
+        "Address": {
+          "properties": {
+            "typeId": {
+              "description": "Address type. -10 = Private, -11 = Business, -12 = Billing, -13 = Delivery",
+              "title": "Typeid",
+              "type": "integer"
+            },
+            "street": {
+              "description": "Street (without house number)",
+              "title": "Street",
+              "type": "string"
+            },
+            "streetNumber": {
+              "description": "House number",
+              "title": "Streetnumber",
+              "type": "string"
+            },
+            "addition": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Additional info (e.g. '2nd floor')",
+              "title": "Addition"
+            },
+            "zipcode": {
+              "description": "Postal code",
+              "title": "Zipcode",
+              "type": "string"
+            },
+            "city": {
+              "description": "City name",
+              "title": "City",
+              "type": "string"
+            },
+            "countryCode": {
+              "description": "2-char ISO country code (e.g. DE)",
+              "maxLength": 2,
+              "minLength": 2,
+              "title": "Countrycode",
+              "type": "string"
+            }
+          },
+          "required": [
+            "typeId",
+            "street",
+            "streetNumber",
+            "zipcode",
+            "city",
+            "countryCode"
+          ],
+          "title": "Address",
+          "type": "object"
+        },
+        "Attributes": {
+          "properties": {
+            "attribute_331": {
+              "default": "Handy/Smartphone",
+              "description": " (allowed: Handy/Smartphone, Tablet, Smartwatch)",
+              "enum": [
+                "Handy/Smartphone",
+                "Tablet",
+                "Smartwatch"
+              ],
+              "title": "Gerätetyp",
+              "type": "string"
+            }
+          },
+          "title": "Attributes",
+          "type": "object"
+        },
+        "ContactInfo": {
+          "properties": {
+            "typeId": {
+              "description": "Contact type. -21=Mobile, -20=Landline, -23=Email, -22=Fax",
+              "title": "Typeid",
+              "type": "integer"
+            },
+            "value": {
+              "description": "Contact value: phone/email/etc.",
+              "title": "Value",
+              "type": "string"
+            }
+          },
+          "required": [
+            "typeId",
+            "value"
+          ],
+          "title": "ContactInfo",
+          "type": "object"
+        },
+        "Modules": {
+          "properties": {
+            "attribute_604": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": false,
+              "description": "",
+              "title": "Ich kenne meine IMEI-/Seriennummer noch nicht"
+            },
+            "attribute_67": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": "",
+              "description": "",
+              "title": "IMEI-/Seriennummer"
+            },
+            "attribute_3730": {
+              "default": "501 - 750 €",
+              "description": " (allowed: 0 - 250 €, 251 - 500 €, 501 - 750 €, 751 - 1.000 €, 1.001 - 1.250 €, 1.251 - 1.500 €, 1.501 - 1.750 €, 1.751 - 2.000 €, 2.001 - 2.500 €, 2.501 - 3.000 €)",
+              "enum": [
+                "0 - 250 €",
+                "251 - 500 €",
+                "501 - 750 €",
+                "751 - 1.000 €",
+                "1.001 - 1.250 €",
+                "1.251 - 1.500 €",
+                "1.501 - 1.750 €",
+                "1.751 - 2.000 €",
+                "2.001 - 2.500 €",
+                "2.501 - 3.000 €"
+              ],
+              "title": "Unsubventionierter Kaufpreis",
+              "type": "string"
+            },
+            "attribute_3733": {
+              "default": "bis 2 Wochen",
+              "description": " (allowed: bis 2 Wochen, 2 Wochen bis 6 Wochen, 6 Wochen bis halbes Jahr, halbes Jahr bis 1 Jahr, 1 Jahr bis 2 Jahre, älter als 2 Jahre)",
+              "enum": [
+                "bis 2 Wochen",
+                "2 Wochen bis 6 Wochen",
+                "6 Wochen bis halbes Jahr",
+                "halbes Jahr bis 1 Jahr",
+                "1 Jahr bis 2 Jahre",
+                "älter als 2 Jahre"
+              ],
+              "title": "Gerätealter",
+              "type": "string"
+            },
+            "attribute_70": {
+              "description": " (allowed: Samsung, Apple, Huawei, Xiaomi, Acer, AEG, Alcatel, Allview, Amica, Asus, ATAG, Bauknecht, BEKO, Blackberry, Blomberg, Bomann, Bosch (BSH), Candy, Canon, CAT, Caterpillar, Clatronic, Constructa, Cubot, DELL, Doro, Electrolux, Elektra Bregenz, Epson, Exquisit, Fagor, Fairphone, Fujifilm, Fujitsu, Gaggenau, Gigaset, Google, GoPro, Gorenje, Grundig, Haier, Hewlett Packard/HP, Honor, Hoover, HTC, Ignis, Ikea, Indesit, ISY, Juno, Koenic, Körting, Küppersbusch, Leica, Lenovo, LG, Liebherr, Microsoft, Miele, Motorola, Neff, Nikon, Nokia, ok, Olympus, OnePlus, OPPO, Oranier, Panasonic, PEAQ, Privileg, Progress, Schaub Lorenz, Sharp, Sibir, Siemens, Smeg, Sony, Teka, Termikel, UleFone, Vivo, Whirlpool, Wiko, Zanker, Zanussi, ZTE, Sonstige)",
+              "enum": [
+                "Samsung",
+                "Apple",
+                "Huawei",
+                "Xiaomi",
+                "Acer",
+                "AEG",
+                "Alcatel",
+                "Allview",
+                "Amica",
+                "Asus",
+                "ATAG",
+                "Bauknecht",
+                "BEKO",
+                "Blackberry",
+                "Blomberg",
+                "Bomann",
+                "Bosch (BSH)",
+                "Candy",
+                "Canon",
+                "CAT",
+                "Caterpillar",
+                "Clatronic",
+                "Constructa",
+                "Cubot",
+                "DELL",
+                "Doro",
+                "Electrolux",
+                "Elektra Bregenz",
+                "Epson",
+                "Exquisit",
+                "Fagor",
+                "Fairphone",
+                "Fujifilm",
+                "Fujitsu",
+                "Gaggenau",
+                "Gigaset",
+                "Google",
+                "GoPro",
+                "Gorenje",
+                "Grundig",
+                "Haier",
+                "Hewlett Packard/HP",
+                "Honor",
+                "Hoover",
+                "HTC",
+                "Ignis",
+                "Ikea",
+                "Indesit",
+                "ISY",
+                "Juno",
+                "Koenic",
+                "Körting",
+                "Küppersbusch",
+                "Leica",
+                "Lenovo",
+                "LG",
+                "Liebherr",
+                "Microsoft",
+                "Miele",
+                "Motorola",
+                "Neff",
+                "Nikon",
+                "Nokia",
+                "ok",
+                "Olympus",
+                "OnePlus",
+                "OPPO",
+                "Oranier",
+                "Panasonic",
+                "PEAQ",
+                "Privileg",
+                "Progress",
+                "Schaub Lorenz",
+                "Sharp",
+                "Sibir",
+                "Siemens",
+                "Smeg",
+                "Sony",
+                "Teka",
+                "Termikel",
+                "UleFone",
+                "Vivo",
+                "Whirlpool",
+                "Wiko",
+                "Zanker",
+                "Zanussi",
+                "ZTE",
+                "Sonstige"
+              ],
+              "title": "Hersteller",
+              "type": "string"
+            },
+            "attribute_217": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": "",
+              "description": "",
+              "title": "Herstellername"
+            },
+            "attribute_130": {
+              "default": "",
+              "description": "",
+              "title": "Modell",
+              "type": "string"
+            },
+            "attribute_16": {
+              "default": 24,
+              "description": " (must be integer)",
+              "title": "Herstellergarantie (Monate)",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "attribute_70"
+          ],
+          "title": "Modules",
+          "type": "object"
+        },
+        "PaymentProvider": {
+          "description": "Fields required depend on providerType:\n- -160 (Credit card): providerName, accountNumber, accountOwner, expirationDate required\n- -161 (Bank): providerNumber, accountNumber, accountOwner required\n- -162, -163, -165: accountNumber required",
+          "properties": {
+            "providerType": {
+              "description": "Type of payment service provider. Possible values: -160 = Credit card, -161 = Bank, -162 = Amazon Pay, -163 = PayPal, -165 = Google PayRequired fields by type: -160: providerName, accountNumber, accountOwner, expirationDate; -161: providerNumber, accountNumber, accountOwner; -162/-163/-165: accountNumber.",
+              "title": "Providertype",
+              "type": "integer"
+            },
+            "providerNumber": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "BIC of the bank, necessary for international accounts only",
+              "title": "Providernumber"
+            },
+            "providerName": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Mandatory for providerType=-160, Possible values: Name of bank, 'VISA', 'AMEX', ...",
+              "title": "Providername"
+            },
+            "accountNumber": {
+              "description": "Mandatory - either IBAN, credit card number or payment id (associated email for online payment services)",
+              "title": "Accountnumber",
+              "type": "string"
+            },
+            "accountOwner": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Name of account owner",
+              "title": "Accountowner"
+            },
+            "expirationDate": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Needed when providerType=-160",
+              "title": "Expirationdate"
+            }
+          },
+          "required": [
+            "providerType",
+            "accountNumber"
+          ],
+          "title": "PaymentProvider",
+          "type": "object"
+        },
+        "Person": {
+          "properties": {
+            "typeId": {
+              "description": "Person type: -2101 main, -30 company",
+              "title": "Typeid",
+              "type": "integer"
+            },
+            "salutationId": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Salutation ID, required for individuals",
+              "title": "Salutationid"
+            },
+            "title": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Title such as Dr., Prof., etc.",
+              "title": "Title"
+            },
+            "firstName": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "First name. Not for companies.",
+              "title": "Firstname"
+            },
+            "lastName": {
+              "description": "Last name or company name",
+              "title": "Lastname",
+              "type": "string"
+            },
+            "dateOfBirth": {
+              "anyOf": [
+                {
+                  "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Date of birth (YYYY-MM-DD)",
+              "title": "Dateofbirth"
+            },
+            "addresses": {
+              "description": "Addresses of the person",
+              "items": {
+                "$ref": "#/$defs/Address"
+              },
+              "title": "Addresses",
+              "type": "array"
+            },
+            "contactInformations": {
+              "description": "Contact info (phone, email, etc.)",
+              "items": {
+                "$ref": "#/$defs/ContactInfo"
+              },
+              "title": "Contactinformations",
+              "type": "array"
+            }
+          },
+          "required": [
+            "typeId",
+            "lastName"
+          ],
+          "title": "Person",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "Person": {
+          "$ref": "#/$defs/Person"
+        },
+        "Payment": {
+          "$ref": "#/$defs/PaymentProvider"
+        },
+        "Attributes": {
+          "$ref": "#/$defs/Attributes"
+        },
+        "Modules": {
+          "$ref": "#/$defs/Modules"
+        }
+      },
+      "required": [
+        "Person",
+        "Payment",
+        "Attributes",
+        "Modules"
+      ],
+      "title": "Form_3424",
+      "type": "object"
+    }
+  },
+  {
+    "id": 3436,
+    "name": "HandySchutzbrief Premium mit Diebstahl (Risikoträger ELEMENT)",
+    "schema": {
+      "$defs": {
+        "Address": {
+          "properties": {
+            "typeId": {
+              "description": "Address type. -10 = Private, -11 = Business, -12 = Billing, -13 = Delivery",
+              "title": "Typeid",
+              "type": "integer"
+            },
+            "street": {
+              "description": "Street (without house number)",
+              "title": "Street",
+              "type": "string"
+            },
+            "streetNumber": {
+              "description": "House number",
+              "title": "Streetnumber",
+              "type": "string"
+            },
+            "addition": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Additional info (e.g. '2nd floor')",
+              "title": "Addition"
+            },
+            "zipcode": {
+              "description": "Postal code",
+              "title": "Zipcode",
+              "type": "string"
+            },
+            "city": {
+              "description": "City name",
+              "title": "City",
+              "type": "string"
+            },
+            "countryCode": {
+              "description": "2-char ISO country code (e.g. DE)",
+              "maxLength": 2,
+              "minLength": 2,
+              "title": "Countrycode",
+              "type": "string"
+            }
+          },
+          "required": [
+            "typeId",
+            "street",
+            "streetNumber",
+            "zipcode",
+            "city",
+            "countryCode"
+          ],
+          "title": "Address",
+          "type": "object"
+        },
+        "Attributes": {
+          "properties": {
+            "attribute_331": {
+              "default": "Handy/Smartphone",
+              "description": " (allowed: Handy/Smartphone, Tablet, Smartwatch)",
+              "enum": [
+                "Handy/Smartphone",
+                "Tablet",
+                "Smartwatch"
+              ],
+              "title": "Gerätetyp",
+              "type": "string"
+            }
+          },
+          "title": "Attributes",
+          "type": "object"
+        },
+        "ContactInfo": {
+          "properties": {
+            "typeId": {
+              "description": "Contact type. -21=Mobile, -20=Landline, -23=Email, -22=Fax",
+              "title": "Typeid",
+              "type": "integer"
+            },
+            "value": {
+              "description": "Contact value: phone/email/etc.",
+              "title": "Value",
+              "type": "string"
+            }
+          },
+          "required": [
+            "typeId",
+            "value"
+          ],
+          "title": "ContactInfo",
+          "type": "object"
+        },
+        "Modules": {
+          "properties": {
+            "attribute_604": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": false,
+              "description": "",
+              "title": "Ich kenne meine IMEI-/Seriennummer noch nicht"
+            },
+            "attribute_67": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": "",
+              "description": "",
+              "title": "IMEI-/Seriennummer"
+            },
+            "attribute_3730": {
+              "default": "501 - 750 €",
+              "description": " (allowed: 0 - 250 €, 251 - 500 €, 501 - 750 €, 751 - 1.000 €, 1.001 - 1.250 €, 1.251 - 1.500 €, 1.501 - 1.750 €, 1.751 - 2.000 €, 2.001 - 2.500 €, 2.501 - 3.000 €)",
+              "enum": [
+                "0 - 250 €",
+                "251 - 500 €",
+                "501 - 750 €",
+                "751 - 1.000 €",
+                "1.001 - 1.250 €",
+                "1.251 - 1.500 €",
+                "1.501 - 1.750 €",
+                "1.751 - 2.000 €",
+                "2.001 - 2.500 €",
+                "2.501 - 3.000 €"
+              ],
+              "title": "Unsubventionierter Kaufpreis",
+              "type": "string"
+            },
+            "attribute_3733": {
+              "default": "bis 2 Wochen",
+              "description": " (allowed: bis 2 Wochen, 2 Wochen bis 6 Wochen, 6 Wochen bis halbes Jahr, halbes Jahr bis 1 Jahr, 1 Jahr bis 2 Jahre, älter als 2 Jahre)",
+              "enum": [
+                "bis 2 Wochen",
+                "2 Wochen bis 6 Wochen",
+                "6 Wochen bis halbes Jahr",
+                "halbes Jahr bis 1 Jahr",
+                "1 Jahr bis 2 Jahre",
+                "älter als 2 Jahre"
+              ],
+              "title": "Gerätealter",
+              "type": "string"
+            },
+            "attribute_70": {
+              "description": " (allowed: Samsung, Apple, Huawei, Xiaomi, Acer, AEG, Alcatel, Allview, Amica, Asus, ATAG, Bauknecht, BEKO, Blackberry, Blomberg, Bomann, Bosch (BSH), Candy, Canon, CAT, Caterpillar, Clatronic, Constructa, Cubot, DELL, Doro, Electrolux, Elektra Bregenz, Epson, Exquisit, Fagor, Fairphone, Fujifilm, Fujitsu, Gaggenau, Gigaset, Google, GoPro, Gorenje, Grundig, Haier, Hewlett Packard/HP, Honor, Hoover, HTC, Ignis, Ikea, Indesit, ISY, Juno, Koenic, Körting, Küppersbusch, Leica, Lenovo, LG, Liebherr, Microsoft, Miele, Motorola, Neff, Nikon, Nokia, ok, Olympus, OnePlus, OPPO, Oranier, Panasonic, PEAQ, Privileg, Progress, Schaub Lorenz, Sharp, Sibir, Siemens, Smeg, Sony, Teka, Termikel, UleFone, Vivo, Whirlpool, Wiko, Zanker, Zanussi, ZTE, Sonstige)",
+              "enum": [
+                "Samsung",
+                "Apple",
+                "Huawei",
+                "Xiaomi",
+                "Acer",
+                "AEG",
+                "Alcatel",
+                "Allview",
+                "Amica",
+                "Asus",
+                "ATAG",
+                "Bauknecht",
+                "BEKO",
+                "Blackberry",
+                "Blomberg",
+                "Bomann",
+                "Bosch (BSH)",
+                "Candy",
+                "Canon",
+                "CAT",
+                "Caterpillar",
+                "Clatronic",
+                "Constructa",
+                "Cubot",
+                "DELL",
+                "Doro",
+                "Electrolux",
+                "Elektra Bregenz",
+                "Epson",
+                "Exquisit",
+                "Fagor",
+                "Fairphone",
+                "Fujifilm",
+                "Fujitsu",
+                "Gaggenau",
+                "Gigaset",
+                "Google",
+                "GoPro",
+                "Gorenje",
+                "Grundig",
+                "Haier",
+                "Hewlett Packard/HP",
+                "Honor",
+                "Hoover",
+                "HTC",
+                "Ignis",
+                "Ikea",
+                "Indesit",
+                "ISY",
+                "Juno",
+                "Koenic",
+                "Körting",
+                "Küppersbusch",
+                "Leica",
+                "Lenovo",
+                "LG",
+                "Liebherr",
+                "Microsoft",
+                "Miele",
+                "Motorola",
+                "Neff",
+                "Nikon",
+                "Nokia",
+                "ok",
+                "Olympus",
+                "OnePlus",
+                "OPPO",
+                "Oranier",
+                "Panasonic",
+                "PEAQ",
+                "Privileg",
+                "Progress",
+                "Schaub Lorenz",
+                "Sharp",
+                "Sibir",
+                "Siemens",
+                "Smeg",
+                "Sony",
+                "Teka",
+                "Termikel",
+                "UleFone",
+                "Vivo",
+                "Whirlpool",
+                "Wiko",
+                "Zanker",
+                "Zanussi",
+                "ZTE",
+                "Sonstige"
+              ],
+              "title": "Hersteller",
+              "type": "string"
+            },
+            "attribute_217": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": "",
+              "description": "",
+              "title": "Herstellername"
+            },
+            "attribute_130": {
+              "default": "",
+              "description": "",
+              "title": "Modell",
+              "type": "string"
+            },
+            "attribute_16": {
+              "default": 24,
+              "description": " (must be integer)",
+              "title": "Herstellergarantie (Monate)",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "attribute_70"
+          ],
+          "title": "Modules",
+          "type": "object"
+        },
+        "PaymentProvider": {
+          "description": "Fields required depend on providerType:\n- -160 (Credit card): providerName, accountNumber, accountOwner, expirationDate required\n- -161 (Bank): providerNumber, accountNumber, accountOwner required\n- -162, -163, -165: accountNumber required",
+          "properties": {
+            "providerType": {
+              "description": "Type of payment service provider. Possible values: -160 = Credit card, -161 = Bank, -162 = Amazon Pay, -163 = PayPal, -165 = Google PayRequired fields by type: -160: providerName, accountNumber, accountOwner, expirationDate; -161: providerNumber, accountNumber, accountOwner; -162/-163/-165: accountNumber.",
+              "title": "Providertype",
+              "type": "integer"
+            },
+            "providerNumber": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "BIC of the bank, necessary for international accounts only",
+              "title": "Providernumber"
+            },
+            "providerName": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Mandatory for providerType=-160, Possible values: Name of bank, 'VISA', 'AMEX', ...",
+              "title": "Providername"
+            },
+            "accountNumber": {
+              "description": "Mandatory - either IBAN, credit card number or payment id (associated email for online payment services)",
+              "title": "Accountnumber",
+              "type": "string"
+            },
+            "accountOwner": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Name of account owner",
+              "title": "Accountowner"
+            },
+            "expirationDate": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Needed when providerType=-160",
+              "title": "Expirationdate"
+            }
+          },
+          "required": [
+            "providerType",
+            "accountNumber"
+          ],
+          "title": "PaymentProvider",
+          "type": "object"
+        },
+        "Person": {
+          "properties": {
+            "typeId": {
+              "description": "Person type: -2101 main, -30 company",
+              "title": "Typeid",
+              "type": "integer"
+            },
+            "salutationId": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Salutation ID, required for individuals",
+              "title": "Salutationid"
+            },
+            "title": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Title such as Dr., Prof., etc.",
+              "title": "Title"
+            },
+            "firstName": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "First name. Not for companies.",
+              "title": "Firstname"
+            },
+            "lastName": {
+              "description": "Last name or company name",
+              "title": "Lastname",
+              "type": "string"
+            },
+            "dateOfBirth": {
+              "anyOf": [
+                {
+                  "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Date of birth (YYYY-MM-DD)",
+              "title": "Dateofbirth"
+            },
+            "addresses": {
+              "description": "Addresses of the person",
+              "items": {
+                "$ref": "#/$defs/Address"
+              },
+              "title": "Addresses",
+              "type": "array"
+            },
+            "contactInformations": {
+              "description": "Contact info (phone, email, etc.)",
+              "items": {
+                "$ref": "#/$defs/ContactInfo"
+              },
+              "title": "Contactinformations",
+              "type": "array"
+            }
+          },
+          "required": [
+            "typeId",
+            "lastName"
+          ],
+          "title": "Person",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "Person": {
+          "$ref": "#/$defs/Person"
+        },
+        "Payment": {
+          "$ref": "#/$defs/PaymentProvider"
+        },
+        "Attributes": {
+          "$ref": "#/$defs/Attributes"
+        },
+        "Modules": {
+          "$ref": "#/$defs/Modules"
+        }
+      },
+      "required": [
+        "Person",
+        "Payment",
+        "Attributes",
+        "Modules"
+      ],
+      "title": "Form_3436",
+      "type": "object"
+    }
+  },
+  {
+    "id": 3448,
+    "name": "HandySchutzbrief Premium Online mit Diebstahl (Risikoträger ELEMENT)",
+    "schema": {
+      "$defs": {
+        "Address": {
+          "properties": {
+            "typeId": {
+              "description": "Address type. -10 = Private, -11 = Business, -12 = Billing, -13 = Delivery",
+              "title": "Typeid",
+              "type": "integer"
+            },
+            "street": {
+              "description": "Street (without house number)",
+              "title": "Street",
+              "type": "string"
+            },
+            "streetNumber": {
+              "description": "House number",
+              "title": "Streetnumber",
+              "type": "string"
+            },
+            "addition": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Additional info (e.g. '2nd floor')",
+              "title": "Addition"
+            },
+            "zipcode": {
+              "description": "Postal code",
+              "title": "Zipcode",
+              "type": "string"
+            },
+            "city": {
+              "description": "City name",
+              "title": "City",
+              "type": "string"
+            },
+            "countryCode": {
+              "description": "2-char ISO country code (e.g. DE)",
+              "maxLength": 2,
+              "minLength": 2,
+              "title": "Countrycode",
+              "type": "string"
+            }
+          },
+          "required": [
+            "typeId",
+            "street",
+            "streetNumber",
+            "zipcode",
+            "city",
+            "countryCode"
+          ],
+          "title": "Address",
+          "type": "object"
+        },
+        "Attributes": {
+          "properties": {
+            "attribute_331": {
+              "default": "Handy/Smartphone",
+              "description": " (allowed: Handy/Smartphone, Tablet, Smartwatch)",
+              "enum": [
+                "Handy/Smartphone",
+                "Tablet",
+                "Smartwatch"
+              ],
+              "title": "Gerätetyp",
+              "type": "string"
+            }
+          },
+          "title": "Attributes",
+          "type": "object"
+        },
+        "ContactInfo": {
+          "properties": {
+            "typeId": {
+              "description": "Contact type. -21=Mobile, -20=Landline, -23=Email, -22=Fax",
+              "title": "Typeid",
+              "type": "integer"
+            },
+            "value": {
+              "description": "Contact value: phone/email/etc.",
+              "title": "Value",
+              "type": "string"
+            }
+          },
+          "required": [
+            "typeId",
+            "value"
+          ],
+          "title": "ContactInfo",
+          "type": "object"
+        },
+        "Modules": {
+          "properties": {
+            "attribute_604": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": false,
+              "description": "",
+              "title": "Ich kenne meine IMEI-/Seriennummer noch nicht"
+            },
+            "attribute_67": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": "",
+              "description": "",
+              "title": "IMEI-/Seriennummer"
+            },
+            "attribute_166": {
+              "default": "",
+              "description": "",
+              "title": "Gerätepreis",
+              "type": "string"
+            },
+            "attribute_1": {
+              "description": " (YYYY-MM-DD)",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "title": "Kaufdatum",
+              "type": "string"
+            },
+            "attribute_70": {
+              "description": " (allowed: Samsung, Apple, Huawei, Xiaomi, Acer, AEG, Alcatel, Allview, Amica, Asus, ATAG, Bauknecht, BEKO, Blackberry, Blomberg, Bomann, Bosch (BSH), Candy, Canon, CAT, Caterpillar, Clatronic, Constructa, Cubot, DELL, Doro, Electrolux, Elektra Bregenz, Epson, Exquisit, Fagor, Fairphone, Fujifilm, Fujitsu, Gaggenau, Gigaset, Google, GoPro, Gorenje, Grundig, Haier, Hewlett Packard/HP, Honor, Hoover, HTC, Ignis, Ikea, Indesit, ISY, Juno, Koenic, Körting, Küppersbusch, Leica, Lenovo, LG, Liebherr, Microsoft, Miele, Motorola, Neff, Nikon, Nokia, ok, Olympus, OnePlus, OPPO, Oranier, Panasonic, PEAQ, Privileg, Progress, Schaub Lorenz, Sharp, Sibir, Siemens, Smeg, Sony, Teka, Termikel, UleFone, Vivo, Whirlpool, Wiko, Zanker, Zanussi, ZTE, Sonstige)",
+              "enum": [
+                "Samsung",
+                "Apple",
+                "Huawei",
+                "Xiaomi",
+                "Acer",
+                "AEG",
+                "Alcatel",
+                "Allview",
+                "Amica",
+                "Asus",
+                "ATAG",
+                "Bauknecht",
+                "BEKO",
+                "Blackberry",
+                "Blomberg",
+                "Bomann",
+                "Bosch (BSH)",
+                "Candy",
+                "Canon",
+                "CAT",
+                "Caterpillar",
+                "Clatronic",
+                "Constructa",
+                "Cubot",
+                "DELL",
+                "Doro",
+                "Electrolux",
+                "Elektra Bregenz",
+                "Epson",
+                "Exquisit",
+                "Fagor",
+                "Fairphone",
+                "Fujifilm",
+                "Fujitsu",
+                "Gaggenau",
+                "Gigaset",
+                "Google",
+                "GoPro",
+                "Gorenje",
+                "Grundig",
+                "Haier",
+                "Hewlett Packard/HP",
+                "Honor",
+                "Hoover",
+                "HTC",
+                "Ignis",
+                "Ikea",
+                "Indesit",
+                "ISY",
+                "Juno",
+                "Koenic",
+                "Körting",
+                "Küppersbusch",
+                "Leica",
+                "Lenovo",
+                "LG",
+                "Liebherr",
+                "Microsoft",
+                "Miele",
+                "Motorola",
+                "Neff",
+                "Nikon",
+                "Nokia",
+                "ok",
+                "Olympus",
+                "OnePlus",
+                "OPPO",
+                "Oranier",
+                "Panasonic",
+                "PEAQ",
+                "Privileg",
+                "Progress",
+                "Schaub Lorenz",
+                "Sharp",
+                "Sibir",
+                "Siemens",
+                "Smeg",
+                "Sony",
+                "Teka",
+                "Termikel",
+                "UleFone",
+                "Vivo",
+                "Whirlpool",
+                "Wiko",
+                "Zanker",
+                "Zanussi",
+                "ZTE",
+                "Sonstige"
+              ],
+              "title": "Hersteller",
+              "type": "string"
+            },
+            "attribute_217": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": "",
+              "description": "",
+              "title": "Herstellername"
+            },
+            "attribute_130": {
+              "default": "",
+              "description": "",
+              "title": "Modell",
+              "type": "string"
+            },
+            "attribute_16": {
+              "default": 24,
+              "description": " (must be integer)",
+              "title": "Herstellergarantie (Monate)",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "attribute_1",
+            "attribute_70"
+          ],
+          "title": "Modules",
+          "type": "object"
+        },
+        "PaymentProvider": {
+          "description": "Fields required depend on providerType:\n- -160 (Credit card): providerName, accountNumber, accountOwner, expirationDate required\n- -161 (Bank): providerNumber, accountNumber, accountOwner required\n- -162, -163, -165: accountNumber required",
+          "properties": {
+            "providerType": {
+              "description": "Type of payment service provider. Possible values: -160 = Credit card, -161 = Bank, -162 = Amazon Pay, -163 = PayPal, -165 = Google PayRequired fields by type: -160: providerName, accountNumber, accountOwner, expirationDate; -161: providerNumber, accountNumber, accountOwner; -162/-163/-165: accountNumber.",
+              "title": "Providertype",
+              "type": "integer"
+            },
+            "providerNumber": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "BIC of the bank, necessary for international accounts only",
+              "title": "Providernumber"
+            },
+            "providerName": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Mandatory for providerType=-160, Possible values: Name of bank, 'VISA', 'AMEX', ...",
+              "title": "Providername"
+            },
+            "accountNumber": {
+              "description": "Mandatory - either IBAN, credit card number or payment id (associated email for online payment services)",
+              "title": "Accountnumber",
+              "type": "string"
+            },
+            "accountOwner": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Name of account owner",
+              "title": "Accountowner"
+            },
+            "expirationDate": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Needed when providerType=-160",
+              "title": "Expirationdate"
+            }
+          },
+          "required": [
+            "providerType",
+            "accountNumber"
+          ],
+          "title": "PaymentProvider",
+          "type": "object"
+        },
+        "Person": {
+          "properties": {
+            "typeId": {
+              "description": "Person type: -2101 main, -30 company",
+              "title": "Typeid",
+              "type": "integer"
+            },
+            "salutationId": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Salutation ID, required for individuals",
+              "title": "Salutationid"
+            },
+            "title": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Title such as Dr., Prof., etc.",
+              "title": "Title"
+            },
+            "firstName": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "First name. Not for companies.",
+              "title": "Firstname"
+            },
+            "lastName": {
+              "description": "Last name or company name",
+              "title": "Lastname",
+              "type": "string"
+            },
+            "dateOfBirth": {
+              "anyOf": [
+                {
+                  "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Date of birth (YYYY-MM-DD)",
+              "title": "Dateofbirth"
+            },
+            "addresses": {
+              "description": "Addresses of the person",
+              "items": {
+                "$ref": "#/$defs/Address"
+              },
+              "title": "Addresses",
+              "type": "array"
+            },
+            "contactInformations": {
+              "description": "Contact info (phone, email, etc.)",
+              "items": {
+                "$ref": "#/$defs/ContactInfo"
+              },
+              "title": "Contactinformations",
+              "type": "array"
+            }
+          },
+          "required": [
+            "typeId",
+            "lastName"
+          ],
+          "title": "Person",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "Person": {
+          "$ref": "#/$defs/Person"
+        },
+        "Payment": {
+          "$ref": "#/$defs/PaymentProvider"
+        },
+        "Attributes": {
+          "$ref": "#/$defs/Attributes"
+        },
+        "Modules": {
+          "$ref": "#/$defs/Modules"
+        }
+      },
+      "required": [
+        "Person",
+        "Payment",
+        "Attributes",
+        "Modules"
+      ],
+      "title": "Form_3448",
+      "type": "object"
+    }
+  },
+  {
+    "id": 3571,
+    "name": "HandySchutzbrief Mobilfunk Basis ohne Diebstahl (Risikoträger ELEMENT)",
+    "schema": {
+      "$defs": {
+        "Address": {
+          "properties": {
+            "typeId": {
+              "description": "Address type. -10 = Private, -11 = Business, -12 = Billing, -13 = Delivery",
+              "title": "Typeid",
+              "type": "integer"
+            },
+            "street": {
+              "description": "Street (without house number)",
+              "title": "Street",
+              "type": "string"
+            },
+            "streetNumber": {
+              "description": "House number",
+              "title": "Streetnumber",
+              "type": "string"
+            },
+            "addition": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Additional info (e.g. '2nd floor')",
+              "title": "Addition"
+            },
+            "zipcode": {
+              "description": "Postal code",
+              "title": "Zipcode",
+              "type": "string"
+            },
+            "city": {
+              "description": "City name",
+              "title": "City",
+              "type": "string"
+            },
+            "countryCode": {
+              "description": "2-char ISO country code (e.g. DE)",
+              "maxLength": 2,
+              "minLength": 2,
+              "title": "Countrycode",
+              "type": "string"
+            }
+          },
+          "required": [
+            "typeId",
+            "street",
+            "streetNumber",
+            "zipcode",
+            "city",
+            "countryCode"
+          ],
+          "title": "Address",
+          "type": "object"
+        },
+        "Attributes": {
+          "properties": {
+            "attribute_331": {
+              "default": "Handy/Smartphone",
+              "description": " (allowed: Handy/Smartphone, Tablet, Smartwatch)",
+              "enum": [
+                "Handy/Smartphone",
+                "Tablet",
+                "Smartwatch"
+              ],
+              "title": "Gerätetyp",
+              "type": "string"
+            }
+          },
+          "title": "Attributes",
+          "type": "object"
+        },
+        "ContactInfo": {
+          "properties": {
+            "typeId": {
+              "description": "Contact type. -21=Mobile, -20=Landline, -23=Email, -22=Fax",
+              "title": "Typeid",
+              "type": "integer"
+            },
+            "value": {
+              "description": "Contact value: phone/email/etc.",
+              "title": "Value",
+              "type": "string"
+            }
+          },
+          "required": [
+            "typeId",
+            "value"
+          ],
+          "title": "ContactInfo",
+          "type": "object"
+        },
+        "Modules": {
+          "properties": {
+            "attribute_604": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": false,
+              "description": "",
+              "title": "Ich kenne meine IMEI-/Seriennummer noch nicht"
+            },
+            "attribute_67": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": "",
+              "description": "",
+              "title": "IMEI-/Seriennummer"
+            },
+            "attribute_3730": {
+              "default": "501 - 750 €",
+              "description": " (allowed: 0 - 250 €, 251 - 500 €, 501 - 750 €, 751 - 1.000 €, 1.001 - 1.250 €, 1.251 - 1.500 €, 1.501 - 1.750 €, 1.751 - 2.000 €, 2.001 - 2.500 €, 2.501 - 3.000 €)",
+              "enum": [
+                "0 - 250 €",
+                "251 - 500 €",
+                "501 - 750 €",
+                "751 - 1.000 €",
+                "1.001 - 1.250 €",
+                "1.251 - 1.500 €",
+                "1.501 - 1.750 €",
+                "1.751 - 2.000 €",
+                "2.001 - 2.500 €",
+                "2.501 - 3.000 €"
+              ],
+              "title": "Unsubventionierter Kaufpreis",
+              "type": "string"
+            },
+            "attribute_3733": {
+              "default": "bis 2 Wochen",
+              "description": " (allowed: bis 2 Wochen, 2 Wochen bis 6 Wochen, 6 Wochen bis halbes Jahr, halbes Jahr bis 1 Jahr, 1 Jahr bis 2 Jahre, älter als 2 Jahre)",
+              "enum": [
+                "bis 2 Wochen",
+                "2 Wochen bis 6 Wochen",
+                "6 Wochen bis halbes Jahr",
+                "halbes Jahr bis 1 Jahr",
+                "1 Jahr bis 2 Jahre",
+                "älter als 2 Jahre"
+              ],
+              "title": "Gerätealter",
+              "type": "string"
+            },
+            "attribute_70": {
+              "description": " (allowed: Samsung, Apple, Huawei, Xiaomi, Acer, AEG, Alcatel, Allview, Amica, Asus, ATAG, Bauknecht, BEKO, Blackberry, Blomberg, Bomann, Bosch (BSH), Candy, Canon, CAT, Caterpillar, Clatronic, Constructa, Cubot, DELL, Doro, Electrolux, Elektra Bregenz, Epson, Exquisit, Fagor, Fairphone, Fujifilm, Fujitsu, Gaggenau, Gigaset, Google, GoPro, Gorenje, Grundig, Haier, Hewlett Packard/HP, Honor, Hoover, HTC, Ignis, Ikea, Indesit, ISY, Juno, Koenic, Körting, Küppersbusch, Leica, Lenovo, LG, Liebherr, Microsoft, Miele, Motorola, Neff, Nikon, Nokia, ok, Olympus, OnePlus, OPPO, Oranier, Panasonic, PEAQ, Privileg, Progress, Schaub Lorenz, Sharp, Sibir, Siemens, Smeg, Sony, Teka, Termikel, UleFone, Vivo, Whirlpool, Wiko, Zanker, Zanussi, ZTE, Sonstige)",
+              "enum": [
+                "Samsung",
+                "Apple",
+                "Huawei",
+                "Xiaomi",
+                "Acer",
+                "AEG",
+                "Alcatel",
+                "Allview",
+                "Amica",
+                "Asus",
+                "ATAG",
+                "Bauknecht",
+                "BEKO",
+                "Blackberry",
+                "Blomberg",
+                "Bomann",
+                "Bosch (BSH)",
+                "Candy",
+                "Canon",
+                "CAT",
+                "Caterpillar",
+                "Clatronic",
+                "Constructa",
+                "Cubot",
+                "DELL",
+                "Doro",
+                "Electrolux",
+                "Elektra Bregenz",
+                "Epson",
+                "Exquisit",
+                "Fagor",
+                "Fairphone",
+                "Fujifilm",
+                "Fujitsu",
+                "Gaggenau",
+                "Gigaset",
+                "Google",
+                "GoPro",
+                "Gorenje",
+                "Grundig",
+                "Haier",
+                "Hewlett Packard/HP",
+                "Honor",
+                "Hoover",
+                "HTC",
+                "Ignis",
+                "Ikea",
+                "Indesit",
+                "ISY",
+                "Juno",
+                "Koenic",
+                "Körting",
+                "Küppersbusch",
+                "Leica",
+                "Lenovo",
+                "LG",
+                "Liebherr",
+                "Microsoft",
+                "Miele",
+                "Motorola",
+                "Neff",
+                "Nikon",
+                "Nokia",
+                "ok",
+                "Olympus",
+                "OnePlus",
+                "OPPO",
+                "Oranier",
+                "Panasonic",
+                "PEAQ",
+                "Privileg",
+                "Progress",
+                "Schaub Lorenz",
+                "Sharp",
+                "Sibir",
+                "Siemens",
+                "Smeg",
+                "Sony",
+                "Teka",
+                "Termikel",
+                "UleFone",
+                "Vivo",
+                "Whirlpool",
+                "Wiko",
+                "Zanker",
+                "Zanussi",
+                "ZTE",
+                "Sonstige"
+              ],
+              "title": "Hersteller",
+              "type": "string"
+            },
+            "attribute_217": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": "",
+              "description": "",
+              "title": "Herstellername"
+            },
+            "attribute_130": {
+              "default": "",
+              "description": "",
+              "title": "Modell",
+              "type": "string"
+            },
+            "attribute_16": {
+              "default": 24,
+              "description": " (must be integer)",
+              "title": "Herstellergarantie (Monate)",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "attribute_70"
+          ],
+          "title": "Modules",
+          "type": "object"
+        },
+        "PaymentProvider": {
+          "description": "Fields required depend on providerType:\n- -160 (Credit card): providerName, accountNumber, accountOwner, expirationDate required\n- -161 (Bank): providerNumber, accountNumber, accountOwner required\n- -162, -163, -165: accountNumber required",
+          "properties": {
+            "providerType": {
+              "description": "Type of payment service provider. Possible values: -160 = Credit card, -161 = Bank, -162 = Amazon Pay, -163 = PayPal, -165 = Google PayRequired fields by type: -160: providerName, accountNumber, accountOwner, expirationDate; -161: providerNumber, accountNumber, accountOwner; -162/-163/-165: accountNumber.",
+              "title": "Providertype",
+              "type": "integer"
+            },
+            "providerNumber": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "BIC of the bank, necessary for international accounts only",
+              "title": "Providernumber"
+            },
+            "providerName": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Mandatory for providerType=-160, Possible values: Name of bank, 'VISA', 'AMEX', ...",
+              "title": "Providername"
+            },
+            "accountNumber": {
+              "description": "Mandatory - either IBAN, credit card number or payment id (associated email for online payment services)",
+              "title": "Accountnumber",
+              "type": "string"
+            },
+            "accountOwner": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Name of account owner",
+              "title": "Accountowner"
+            },
+            "expirationDate": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Needed when providerType=-160",
+              "title": "Expirationdate"
+            }
+          },
+          "required": [
+            "providerType",
+            "accountNumber"
+          ],
+          "title": "PaymentProvider",
+          "type": "object"
+        },
+        "Person": {
+          "properties": {
+            "typeId": {
+              "description": "Person type: -2101 main, -30 company",
+              "title": "Typeid",
+              "type": "integer"
+            },
+            "salutationId": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Salutation ID, required for individuals",
+              "title": "Salutationid"
+            },
+            "title": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Title such as Dr., Prof., etc.",
+              "title": "Title"
+            },
+            "firstName": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "First name. Not for companies.",
+              "title": "Firstname"
+            },
+            "lastName": {
+              "description": "Last name or company name",
+              "title": "Lastname",
+              "type": "string"
+            },
+            "dateOfBirth": {
+              "anyOf": [
+                {
+                  "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Date of birth (YYYY-MM-DD)",
+              "title": "Dateofbirth"
+            },
+            "addresses": {
+              "description": "Addresses of the person",
+              "items": {
+                "$ref": "#/$defs/Address"
+              },
+              "title": "Addresses",
+              "type": "array"
+            },
+            "contactInformations": {
+              "description": "Contact info (phone, email, etc.)",
+              "items": {
+                "$ref": "#/$defs/ContactInfo"
+              },
+              "title": "Contactinformations",
+              "type": "array"
+            }
+          },
+          "required": [
+            "typeId",
+            "lastName"
+          ],
+          "title": "Person",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "Person": {
+          "$ref": "#/$defs/Person"
+        },
+        "Payment": {
+          "$ref": "#/$defs/PaymentProvider"
+        },
+        "Attributes": {
+          "$ref": "#/$defs/Attributes"
+        },
+        "Modules": {
+          "$ref": "#/$defs/Modules"
+        }
+      },
+      "required": [
+        "Person",
+        "Payment",
+        "Attributes",
+        "Modules"
+      ],
+      "title": "Form_3571",
+      "type": "object"
+    }
+  },
+  {
+    "id": 3610,
+    "name": "HandySchutzbrief Mobilfunk Premium ohne Diebstahl (Risikoträger HELVETIA)",
+    "schema": {
+      "$defs": {
+        "Address": {
+          "properties": {
+            "typeId": {
+              "description": "Address type. -10 = Private, -11 = Business, -12 = Billing, -13 = Delivery",
+              "title": "Typeid",
+              "type": "integer"
+            },
+            "street": {
+              "description": "Street (without house number)",
+              "title": "Street",
+              "type": "string"
+            },
+            "streetNumber": {
+              "description": "House number",
+              "title": "Streetnumber",
+              "type": "string"
+            },
+            "addition": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Additional info (e.g. '2nd floor')",
+              "title": "Addition"
+            },
+            "zipcode": {
+              "description": "Postal code",
+              "title": "Zipcode",
+              "type": "string"
+            },
+            "city": {
+              "description": "City name",
+              "title": "City",
+              "type": "string"
+            },
+            "countryCode": {
+              "description": "2-char ISO country code (e.g. DE)",
+              "maxLength": 2,
+              "minLength": 2,
+              "title": "Countrycode",
+              "type": "string"
+            }
+          },
+          "required": [
+            "typeId",
+            "street",
+            "streetNumber",
+            "zipcode",
+            "city",
+            "countryCode"
+          ],
+          "title": "Address",
+          "type": "object"
+        },
+        "Attributes": {
+          "properties": {
+            "attribute_331": {
+              "default": "Handy/Smartphone",
+              "description": " (allowed: Handy/Smartphone, Tablet, Smartwatch)",
+              "enum": [
+                "Handy/Smartphone",
+                "Tablet",
+                "Smartwatch"
+              ],
+              "title": "Gerätetyp",
+              "type": "string"
+            }
+          },
+          "title": "Attributes",
+          "type": "object"
+        },
+        "ContactInfo": {
+          "properties": {
+            "typeId": {
+              "description": "Contact type. -21=Mobile, -20=Landline, -23=Email, -22=Fax",
+              "title": "Typeid",
+              "type": "integer"
+            },
+            "value": {
+              "description": "Contact value: phone/email/etc.",
+              "title": "Value",
+              "type": "string"
+            }
+          },
+          "required": [
+            "typeId",
+            "value"
+          ],
+          "title": "ContactInfo",
+          "type": "object"
+        },
+        "Modules": {
+          "properties": {
+            "attribute_604": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": false,
+              "description": "",
+              "title": "Ich kenne meine IMEI-/Seriennummer noch nicht"
+            },
+            "attribute_67": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": "",
+              "description": "",
+              "title": "IMEI-/Seriennummer"
+            },
+            "attribute_3730": {
+              "default": "501 - 750 €",
+              "description": " (allowed: 0 - 250 €, 251 - 500 €, 501 - 750 €, 751 - 1.000 €, 1.001 - 1.250 €, 1.251 - 1.500 €, 1.501 - 1.750 €, 1.751 - 2.000 €, 2.001 - 2.500 €, 2.501 - 3.000 €)",
+              "enum": [
+                "0 - 250 €",
+                "251 - 500 €",
+                "501 - 750 €",
+                "751 - 1.000 €",
+                "1.001 - 1.250 €",
+                "1.251 - 1.500 €",
+                "1.501 - 1.750 €",
+                "1.751 - 2.000 €",
+                "2.001 - 2.500 €",
+                "2.501 - 3.000 €"
+              ],
+              "title": "Unsubventionierter Kaufpreis",
+              "type": "string"
+            },
+            "attribute_3733": {
+              "const": "bis 2 Wochen",
+              "default": "bis 2 Wochen",
+              "description": " (allowed: bis 2 Wochen)",
+              "title": "Gerätealter",
+              "type": "string"
+            },
+            "attribute_70": {
+              "description": " (allowed: Samsung, Apple, Huawei, Xiaomi, Acer, AEG, Alcatel, Allview, Amica, Asus, ATAG, Bauknecht, BEKO, Blackberry, Blomberg, Bomann, Bosch (BSH), Candy, Canon, CAT, Caterpillar, Clatronic, Constructa, Cubot, DELL, Doro, Electrolux, Elektra Bregenz, Epson, Exquisit, Fagor, Fairphone, Fujifilm, Fujitsu, Gaggenau, Gigaset, Google, GoPro, Gorenje, Grundig, Haier, Hewlett Packard/HP, Honor, Hoover, HTC, Ignis, Ikea, Indesit, ISY, Juno, Koenic, Körting, Küppersbusch, Leica, Lenovo, LG, Liebherr, Microsoft, Miele, Motorola, Neff, Nikon, Nokia, ok, Olympus, OnePlus, OPPO, Oranier, Panasonic, PEAQ, Privileg, Progress, Schaub Lorenz, Sharp, Sibir, Siemens, Smeg, Sony, Teka, Termikel, UleFone, Vivo, Whirlpool, Wiko, Zanker, Zanussi, ZTE, Sonstige)",
+              "enum": [
+                "Samsung",
+                "Apple",
+                "Huawei",
+                "Xiaomi",
+                "Acer",
+                "AEG",
+                "Alcatel",
+                "Allview",
+                "Amica",
+                "Asus",
+                "ATAG",
+                "Bauknecht",
+                "BEKO",
+                "Blackberry",
+                "Blomberg",
+                "Bomann",
+                "Bosch (BSH)",
+                "Candy",
+                "Canon",
+                "CAT",
+                "Caterpillar",
+                "Clatronic",
+                "Constructa",
+                "Cubot",
+                "DELL",
+                "Doro",
+                "Electrolux",
+                "Elektra Bregenz",
+                "Epson",
+                "Exquisit",
+                "Fagor",
+                "Fairphone",
+                "Fujifilm",
+                "Fujitsu",
+                "Gaggenau",
+                "Gigaset",
+                "Google",
+                "GoPro",
+                "Gorenje",
+                "Grundig",
+                "Haier",
+                "Hewlett Packard/HP",
+                "Honor",
+                "Hoover",
+                "HTC",
+                "Ignis",
+                "Ikea",
+                "Indesit",
+                "ISY",
+                "Juno",
+                "Koenic",
+                "Körting",
+                "Küppersbusch",
+                "Leica",
+                "Lenovo",
+                "LG",
+                "Liebherr",
+                "Microsoft",
+                "Miele",
+                "Motorola",
+                "Neff",
+                "Nikon",
+                "Nokia",
+                "ok",
+                "Olympus",
+                "OnePlus",
+                "OPPO",
+                "Oranier",
+                "Panasonic",
+                "PEAQ",
+                "Privileg",
+                "Progress",
+                "Schaub Lorenz",
+                "Sharp",
+                "Sibir",
+                "Siemens",
+                "Smeg",
+                "Sony",
+                "Teka",
+                "Termikel",
+                "UleFone",
+                "Vivo",
+                "Whirlpool",
+                "Wiko",
+                "Zanker",
+                "Zanussi",
+                "ZTE",
+                "Sonstige"
+              ],
+              "title": "Hersteller",
+              "type": "string"
+            },
+            "attribute_217": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": "",
+              "description": "",
+              "title": "Herstellername"
+            },
+            "attribute_130": {
+              "default": "",
+              "description": "",
+              "title": "Modell",
+              "type": "string"
+            },
+            "attribute_16": {
+              "default": 24,
+              "description": " (must be integer)",
+              "title": "Herstellergarantie (Monate)",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "attribute_70"
+          ],
+          "title": "Modules",
+          "type": "object"
+        },
+        "PaymentProvider": {
+          "description": "Fields required depend on providerType:\n- -160 (Credit card): providerName, accountNumber, accountOwner, expirationDate required\n- -161 (Bank): providerNumber, accountNumber, accountOwner required\n- -162, -163, -165: accountNumber required",
+          "properties": {
+            "providerType": {
+              "description": "Type of payment service provider. Possible values: -160 = Credit card, -161 = Bank, -162 = Amazon Pay, -163 = PayPal, -165 = Google PayRequired fields by type: -160: providerName, accountNumber, accountOwner, expirationDate; -161: providerNumber, accountNumber, accountOwner; -162/-163/-165: accountNumber.",
+              "title": "Providertype",
+              "type": "integer"
+            },
+            "providerNumber": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "BIC of the bank, necessary for international accounts only",
+              "title": "Providernumber"
+            },
+            "providerName": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Mandatory for providerType=-160, Possible values: Name of bank, 'VISA', 'AMEX', ...",
+              "title": "Providername"
+            },
+            "accountNumber": {
+              "description": "Mandatory - either IBAN, credit card number or payment id (associated email for online payment services)",
+              "title": "Accountnumber",
+              "type": "string"
+            },
+            "accountOwner": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Name of account owner",
+              "title": "Accountowner"
+            },
+            "expirationDate": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Needed when providerType=-160",
+              "title": "Expirationdate"
+            }
+          },
+          "required": [
+            "providerType",
+            "accountNumber"
+          ],
+          "title": "PaymentProvider",
+          "type": "object"
+        },
+        "Person": {
+          "properties": {
+            "typeId": {
+              "description": "Person type: -2101 main, -30 company",
+              "title": "Typeid",
+              "type": "integer"
+            },
+            "salutationId": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Salutation ID, required for individuals",
+              "title": "Salutationid"
+            },
+            "title": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Title such as Dr., Prof., etc.",
+              "title": "Title"
+            },
+            "firstName": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "First name. Not for companies.",
+              "title": "Firstname"
+            },
+            "lastName": {
+              "description": "Last name or company name",
+              "title": "Lastname",
+              "type": "string"
+            },
+            "dateOfBirth": {
+              "anyOf": [
+                {
+                  "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Date of birth (YYYY-MM-DD)",
+              "title": "Dateofbirth"
+            },
+            "addresses": {
+              "description": "Addresses of the person",
+              "items": {
+                "$ref": "#/$defs/Address"
+              },
+              "title": "Addresses",
+              "type": "array"
+            },
+            "contactInformations": {
+              "description": "Contact info (phone, email, etc.)",
+              "items": {
+                "$ref": "#/$defs/ContactInfo"
+              },
+              "title": "Contactinformations",
+              "type": "array"
+            }
+          },
+          "required": [
+            "typeId",
+            "lastName"
+          ],
+          "title": "Person",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "Person": {
+          "$ref": "#/$defs/Person"
+        },
+        "Payment": {
+          "$ref": "#/$defs/PaymentProvider"
+        },
+        "Attributes": {
+          "$ref": "#/$defs/Attributes"
+        },
+        "Modules": {
+          "$ref": "#/$defs/Modules"
+        }
+      },
+      "required": [
+        "Person",
+        "Payment",
+        "Attributes",
+        "Modules"
+      ],
+      "title": "Form_3610",
+      "type": "object"
+    }
+  }
+]
