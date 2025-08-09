@@ -8,16 +8,28 @@
     "instructions": "Analysiere das JSON eines einzelnen Produkts und erstelle eine kurze, gut lesbare Beschreibung. Liste 5–8 Stichpunkte mit den wichtigsten Merkmalen und schließe mit einer freundlichen Frage ab, ob der Kunde mehr dazu wissen möchte."
   },
   "catalog_responder": {
-  "signature": "items: str, query: str -> response: str",
-  "instructions": "Wenn 'query' eine Kategorie (z. B. 'handyversicherung') ist, liste BIS ZU 8 Produkte, jeweils mit 1–2 Merkmalen (z. B. Diebstahl ja/nein, SB). Nutze die übergebenen 'items' direkt und erfinde keine Produkte. Bei freien Suchbegriffen (kein Kategorie-Treffer) gib eine kompakte Top-3-Auswahl. Antworte klar, ohne Floskeln."
-    },
+    "signature": "items: str, query: str -> response: str",
+    "instructions": "Wenn 'query' eine Kategorie (z. B. 'handyversicherung') ist, liste BIS ZU 8 Produkte, jeweils mit 1–2 Merkmalen (z. B. Diebstahl ja/nein, SB). Nutze die übergebenen 'items' direkt und erfinde keine Produkte. Bei freien Suchbegriffen (kein Kategorie-Treffer) gib eine kompakte Top-3-Auswahl. Antworte klar, ohne Floskeln."
+  },
+  "catalog_unified": {
+    "signature": "catalog: str, query: str, session: str, previous_items: str -> response: str, selected_product_id: str, category_key: str, displayed_items: str",
+    "instructions": "Du erhältst den gesamten Katalog als JSON, die Nutzeranfrage, die Session (inkl. Stage) und eine Liste zuvor gezeigter Items (previous_items: JSON-Liste mit Objekten {id,name}). Antworte STATEFUL: (1) Wenn die Anfrage vage ist UND Stage='portfolio', gib eine knappe Kategorie-Übersicht. (2) Wenn eine Kategorie erkennbar ist ODER Stage!='portfolio', gib eine kurze Liste (bis 8) passender Produkte. (3) Wenn ein konkreter Produktname/ID auftaucht ODER die Anfrage eine kleine Zahl ist, die auf einen Eintrag in previous_items (1-basiert) verweist, dann wähle dieses Produkt und gib eine kurze Detailbeschreibung. Schließe Detailausgaben mit einer klaren Frage ab: 'Diesen Tarif starten?' oder 'Mit einem anderen vergleichen?'. Wenn ein Produkt ausgewählt wurde, setze 'selected_product_id'. Setze 'displayed_items' IMMER auf die aktuell gezeigte Liste (als JSON), sonst '[]'. Erfinde keine Produkte."
+  },
   "form_updater": {
     "signature": "current_form: str, user_input: str -> updated_form: str, provided: str, missing: str",
     "instructions": "Analysiere die Benutzereingabe und aktualisiere das übergebene Formular-JSON. Gib die aktualisierten Felder als JSON-String zurück. Liste außerdem, welche Felder 'provided' (ausgefüllt) und welche 'missing' (noch erforderlich) sind."
   },
   "order_responder": {
     "signature": "history: list, user_input: str, session: str, inner_function: str, provided: str, missing: str -> response: str",
-    "instructions": "Antworte basierend auf dem Bestellkontext. Wenn Felder fehlen, frage gezielt danach. Wenn alles vollständig ist, biete an, den Antrag abzusenden. Sei stets freundlich und knapp."
+    "instructions": "Antworte basierend auf dem Bestellkontext. Wenn Felder fehlen, frage gezielt danach. Wenn alles vollständig ist, biete an, den Antrag abzusenden. Verwende die menschlichen Labels aus 'labels' im Session-JSON und zeige KEINE internen Feldnamen (z. B. device_brand, ProviderType). Nenne nur lesbare Bezeichnungen. Sei stets freundlich und knapp."
+  },
+  "order_unified": {
+    "signature": "history: list, user_input: str, session: str, schema: str -> response: str, updated_form: str, inner_function: str, stage: str",
+    "instructions": "Du steuerst den Bestellfluss Ende-zu-Ende. Nutze 'session' (enthält labels, required_now, form_data, product_id, field_options, provided, missing, groups, group_order) und 'schema'. Regeln: (1) Verwende ausschließlich menschliche Labels aus 'labels' – KEINE internen Namen (z. B. first_name, providerType, accountNumber). (2) Wenn Optionen in session.field_options[<feld>] existieren (z. B. Zahlungsart), zeige diese als Auswahl (kurz). (3) Halte die Abfrage geclustert: Frage pro Turn nur 1–3 Felder aus EINER Gruppe (nächste Gruppe gemäß 'group_order' ∧ 'groups'), damit es übersichtlich bleibt. (4) Wenn alles geklärt ist, biete Absenden an; ansonsten frage gezielt die fehlenden Felder der nächsten Gruppe. (5) Halte Antworten kurz, mit klarer CTA. (6) Setze 'inner_function' ∈ {get_form, _mantix, submit_form} und 'stage' sinnvoll (form/finalized). Erfinde keine Felder."
+  },
+  "order_call": {
+    "signature": "history: list, user_input: str, session: str -> inner_function: str",
+    "instructions": "Wähle die nächste innere Funktion für den Bestellagenten: 'get_form' (Formular starten/anzeigen), '_mantix' (Felder aus Freitext ergänzen), oder 'submit_form' (Absenden, wenn alles vorhanden). Antworte NUR mit einem der drei Tokens."
   },
   "planner": {
     "signature": "history: list, user_input: str, session: str -> function: str, arguments: str",
@@ -26,5 +38,9 @@
   "final_composer": {
     "signature": "sub_response: str, plan: str, session: str, history: list -> final_response: str",
     "instructions": "Poliere die Teilantwort leicht, um sie flüssiger und natürlicher zu machen. Vermeide Wiederholungen. Behalte den Sinn und die Informationen unverändert."
+  },
+  "resolver": {
+    "signature": "query: str, products: str, categories: str -> intent: str, product_id: str, category_key: str, confidence: str",
+    "instructions": "Du klassifizierst Kundenanfragen zu Schutzgarant. Wähle AUSSCHLIESSLICH aus den gegebenen Kandidaten (IDs/Keys). Wenn ein konkreter Tarif genannt wird, hat das Produkt Vorrang vor der Kategorie. Antworte IMMER strukturiert (intent, product_id, category_key, confidence). intent ∈ {product, category, unknown}. product_id/category_key müssen aus den Kandidaten stammen. Antworte kurz, ohne Floskeln."
   }
 }

@@ -193,18 +193,45 @@ def provider_from_catalog(
     if product_id is not None:
         ent = by_id.get(str(product_id))
         if ent:
-            return _normalize_provider(str(ent.get("provider") or "")) or None
+            raw_text = (
+                ent.get("provider")
+                or ent.get("insurer")
+                or ent.get("riskCarrier")
+                or ent.get("displayName")
+                or ent.get("name")
+                or ent.get("title")
+                or ""
+            )
+            return _normalize_provider(str(raw_text)) or None
 
     if product_name:
         ent = by_name.get(product_name.strip().lower())
         if ent:
-            return _normalize_provider(str(ent.get("provider") or "")) or None
+            raw_text = (
+                ent.get("provider")
+                or ent.get("insurer")
+                or ent.get("riskCarrier")
+                or ent.get("displayName")
+                or ent.get("name")
+                or ent.get("title")
+                or ""
+            )
+            return _normalize_provider(str(raw_text)) or None
 
         # substring fallback
         pn = product_name.strip().lower()
         for nm, ent in by_name.items():
             if pn in nm:
-                return _normalize_provider(str(ent.get("provider") or "")) or None
+                raw_text = (
+                    ent.get("provider")
+                    or ent.get("insurer")
+                    or ent.get("riskCarrier")
+                    or ent.get("displayName")
+                    or ent.get("name")
+                    or ent.get("title")
+                    or ""
+                )
+                return _normalize_provider(str(raw_text)) or None
 
     return None
 
@@ -221,7 +248,8 @@ def find_catalog_entry_by_query(query: str) -> Optional[Dict[str, Any]]:
 
     Strategy:
         - Exact case-insensitive match on display name.
-        - Single substring hit → return it; multiple hits → None (ambiguous).
+        - Single substring hit (query in name) → return it; multiple hits → None (ambiguous).
+        - Single containment hit (name in query) → return it; multiple hits → None (ambiguous).
         - Numeric string treated as id lookup.
     """
     if not query:
@@ -233,9 +261,15 @@ def find_catalog_entry_by_query(query: str) -> Optional[Dict[str, Any]]:
     if ent:
         return ent
 
+    # query contained in product name
     candidates = [entry for nm, entry in by_name.items() if q in nm]
     if len(candidates) == 1:
         return candidates[0]
+
+    # product name contained in query (e.g., "<name> klingt interessant")
+    candidates2 = [entry for nm, entry in by_name.items() if nm in q]
+    if len(candidates2) == 1:
+        return candidates2[0]
 
     if q.isdigit():
         ent2 = by_id.get(q)
@@ -564,6 +598,7 @@ FIELD_META: Dict[str, FieldMeta] = {
         label_de="Zahlungsart",
         group="zahlung",
         hint_de="z. B. IBAN / Kreditkarte / PayPal",
+        options=["SEPA/IBAN", "Kreditkarte", "PayPal"],
     ),
     "payment_account": FieldMeta(
         label_de="Zahlungskennung",
@@ -588,9 +623,10 @@ GLOBAL_MIN_REQUIRED: Set[str] = {"first_name", "last_name", "email", "payment_me
 
 # Product-type knobs if you have category-level extras (optional)
 PRODUCT_REQUIRED: Dict[str, Set[str]] = {
-    "handy": {"device_brand"},
-    "laptop": {"device_brand"},
-    "kamera": {"device_brand"},
+    # For device-centric products collect key device fields upfront
+    "handy": {"device_brand", "device_model", "purchase_date", "device_type"},
+    "laptop": {"device_brand", "device_model", "purchase_date", "device_type"},
+    "kamera": {"device_brand", "device_model", "purchase_date", "device_type"},
     "e-bike": set(),
 }
 

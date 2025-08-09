@@ -253,4 +253,71 @@
     "plan": { "function": "schutzgarant_order", "arguments": { "function": "submit_form", "arguments": { "provided": ["first_name","last_name","email","payment_method"], "missing": ["device_model","purchase_date"] } } },
     "agent_response": "Ich kann noch nicht absenden. Es fehlen: Modell, Kauf-/Lieferdatum. Bitte ergänze diese Angaben."
   }
+  ,
+  {
+    "user_input": "1",
+    "session": {
+      "stage": "recommend",
+      "product": "",
+      "form_data": {},
+      "_last_shown_items": [
+        {"id": 3415, "name": "HandySchutzbrief Basis ohne Diebstahl (Risikoträger ELEMENT) – monatlich"},
+        {"id": 3424, "name": "HandySchutzbrief Basis ohne Diebstahl (Risikoträger ELEMENT) – Jahresbeitrag"},
+        {"id": 3436, "name": "HandySchutzbrief Premium mit Diebstahl (Risikoträger ELEMENT)"}
+      ]
+    },
+    "history": [
+      {"role": "agent", "content": "Hier eine Auswahl:\n1) HandySchutzbrief Basis ohne Diebstahl – monatlich\n2) HandySchutzbrief Basis ohne Diebstahl – Jahresbeitrag\n3) HandySchutzbrief Premium mit Diebstahl\nWähle eine Nummer."}
+    ],
+    "plan": {"function": "schutzgarant_catalog", "arguments": {"query": "1"}},
+    "agent_response": "Du hast Tarif 1 gewählt: HandySchutzbrief Basis ohne Diebstahl – monatlich. Kurze Details …\nDiesen Tarif starten oder mit einem anderen vergleichen?"
+  }
+  ,
+  {
+    "user_input": "den starten",
+    "session": {
+      "stage": "recommend",
+      "product": "HandySchutzbrief Basis ohne Diebstahl (Risikoträger ELEMENT)",
+      "product_id": 3415,
+      "form_data": {}
+    },
+    "history": [],
+    "plan": {"function": "schutzgarant_order", "arguments": {"function": "get_form"}},
+    "agent_response": "Alles klar – ich sammle kurz die wichtigsten Angaben.\n\nDeine Personendaten:\n- Vorname\n- Nachname\n\nAntworte einfach direkt."
+  }
+  ,
+  {
+    "user_input": "Anna, Becker",
+    "session": {
+      "stage": "form",
+      "product": "HandySchutzbrief Basis ohne Diebstahl (Risikoträger ELEMENT)",
+      "product_id": 3415,
+      "labels": {"payment_method": "Zahlungsart"},
+      "field_options": {"payment_method": ["SEPA/IBAN", "Kreditkarte", "PayPal"]},
+      "form_data": {"first_name": "", "last_name": ""},
+      "required_now": ["first_name","last_name","email","payment_method"]
+    },
+    "history": [],
+    "plan": {"function": "schutzgarant_order", "arguments": {"function": "_mantix"}},
+    "agent_response": "Danke. Deine Kontaktdaten:\n- E-Mail\n\nZahlungsweise (bitte wählen): SEPA/IBAN / Kreditkarte / PayPal"
+  }
+  ,
+  {
+    "user_input": "Vergleichen",
+    "session": {
+      "stage": "recommend",
+      "product": "HandySchutzbrief Basis ohne Diebstahl (Risikoträger ELEMENT)",
+      "product_id": 3415,
+      "_last_shown_items": [
+        {"id": 3415, "name": "HandySchutzbrief Basis ohne Diebstahl – monatlich"},
+        {"id": 3424, "name": "HandySchutzbrief Basis ohne Diebstahl – Jahresbeitrag"},
+        {"id": 3436, "name": "HandySchutzbrief Premium mit Diebstahl"}
+      ]
+    },
+    "history": [
+      {"role": "agent", "content": "Du hast Tarif 1 gewählt … Diesen Tarif starten oder mit einem anderen vergleichen?"}
+    ],
+    "plan": {"function": "schutzgarant_catalog", "arguments": {"query": "vergleichen"}},
+    "agent_response": "Okay, zwei Alternativen im Vergleich:\n1) Basis ohne Diebstahl – Jahresbeitrag (ID: 3424)\n2) Premium mit Diebstahl (ID: 3436)\nWelche Variante möchtest du näher sehen?"
+  }
 ]
